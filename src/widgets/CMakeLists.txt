@@ -55,8 +55,6 @@ target_sources(
         components/toolbar.hpp
         components/frame.cpp
         components/frame.hpp
-        components/clickablelabel.cpp
-        components/clickablelabel.hpp
         components/topwidgets.cpp
         components/topwidgets.hpp
         components/topleftwidgets.cpp

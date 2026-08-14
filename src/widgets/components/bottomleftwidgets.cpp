@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "bottomleftwidgets.hpp"
-#include "clickablelabel.hpp"
 #include "context/uicontext.hpp"
 #include "frame.hpp"
 #include "keybindings/actionmanager.hpp"
@@ -44,11 +43,12 @@ BottomLeftWidgets::BottomLeftWidgets(ActionManager *actionManager, PageManager *
     zoomOutButton->setIconSize(iconSize);
     zoomOutButton->setDefaultAction(actionManager->action(KStandardActions::ZoomOut));
 
-    auto zoomLabel{new ClickableLabel{zoomControlFrame}};
+    auto zoomLabel{new QToolButton{zoomControlFrame}};
     zoomLabel->setText(i18nc("@label, percent text", "100%"));
+    zoomLabel->setAutoRaise(true);
     zoomLabel->setToolTip(i18nc("@info:tooltip", "Reset Zoom"));
 
-    connect(zoomLabel, &ClickableLabel::clicked, this, &BottomLeftWidgets::resetZoom);
+    connect(zoomLabel, &QToolButton::clicked, this, &BottomLeftWidgets::resetZoom);
 
     auto zoomInButton{new QToolButton{zoomControlFrame}};
     zoomInButton->setAutoRaise(true);
