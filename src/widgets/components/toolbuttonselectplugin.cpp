@@ -56,7 +56,6 @@ ToolButtonSelectPlugin::ToolButtonSelectPlugin(QWidget *parent)
     setFocusPolicy(Qt::NoFocus);
     setAutoRaise(true);
     setCheckable(false);
-    setCursor(Qt::PointingHandCursor);
     setPopupMode(QToolButton::InstantPopup);
 
     const int iconSize = style()->pixelMetric(QStyle::PM_ToolBarIconSize);

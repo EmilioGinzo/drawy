@@ -73,7 +73,6 @@ void ToolBar::addImageTool(const std::shared_ptr<Tool> &tool)
     const int iconSize{style()->pixelMetric(QStyle::PM_ToolBarIconSize)};
     btn->setIconSize(QSize{iconSize, iconSize});
 
-    btn->setCursor(Qt::PointingHandCursor);
     m_tools[Tool::Type::Image] = tool;
     m_group->addButton(btn, static_cast<int>(Tool::Type::Image));
     m_layout->addWidget(btn);
@@ -104,7 +103,6 @@ void ToolBar::addTool(const std::shared_ptr<Tool> &tool, Tool::Type type, const 
     btn->setIconSize(QSize{iconSize, iconSize});
 
     btn->setCheckable(true);
-    btn->setCursor(Qt::PointingHandCursor);
 
     m_tools[type] = tool;
     m_group->addButton(btn, static_cast<int>(type));
