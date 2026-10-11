@@ -1,0 +1,891 @@
+# Translation of drawy into Russian.
+# This file is distributed under the same license as the drawy package.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: drawy\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2026-06-23 02:38+0000\n"
+"PO-Revision-Date: 2026-10-10 12:14+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Александр Яворский"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kekcuha@gmail.com"
+
+#: apps/main.cpp:46
+#, kde-format
+msgctxt "@info:shell"
+msgid "An optional argument 'file' "
+msgstr "Необязательный аргумент «файл» "
+
+#: apps/main.cpp:47
+#, kde-format
+msgid "Your handy, infinite brainstorming tool!"
+msgstr "Удобный безграничный инструмент для мозгового штурма"
+
+#: gui/properties/property.cpp:97
+#, kde-format
+msgid "Change Stroke Width"
+msgstr "Изменить толщину линии"
+
+#: gui/properties/property.cpp:99
+#, kde-format
+msgid "Change Stroke Color"
+msgstr "Изменить цвет обводки"
+
+#: gui/properties/property.cpp:101
+#, kde-format
+msgid "Change Opacity"
+msgstr "Изменить непрозрачность"
+
+#: gui/properties/property.cpp:103
+#, kde-format
+msgid "Change Font Size"
+msgstr "Изменить размер шрифта"
+
+#: gui/properties/property.cpp:105
+#, kde-format
+msgid "Change Eraser Size"
+msgstr "Изменить размер ластика"
+
+#: gui/properties/property.cpp:107
+#: widgets/properties/widgets/actionswidget.cpp:50
+#, kde-format
+msgid "Actions"
+msgstr "Действия"
+
+#: gui/properties/property.cpp:109
+#, kde-format
+msgid "Change Stroke Style"
+msgstr "Изменить стиль обводки"
+
+#: gui/properties/property.cpp:111
+#, kde-format
+msgid "Change Background Color"
+msgstr "Изменить цвет фона"
+
+#: gui/properties/property.cpp:113
+#, kde-format
+msgid "Change Background Style"
+msgstr "Изменить стиль фона"
+
+#: gui/properties/property.cpp:115
+#, kde-format
+msgid "Change Start Arrow Head"
+msgstr "Изменить начальный наконечник стрелки"
+
+#: gui/properties/property.cpp:117
+#, kde-format
+msgid "Change End Arrow Head"
+msgstr "Изменить конечный наконечник стрелки"
+
+#: gui/properties/property.cpp:122 widgets/command/zordercommand.cpp:88
+#, kde-format
+msgid "Change ZOrder"
+msgstr "Изменить Z-порядок"
+
+#: plugins/basicshapes/basicshapesplugin.cpp:31
+#, kde-format
+msgid "Basic Shapes"
+msgstr "Основные фигуры"
+
+#: plugins/basicshapes/triangle/triangle.cpp:88
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Triangle"
+msgstr "Треугольник"
+
+#: plugins/basicshapes/xbox/xbox.cpp:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "X Box"
+msgstr "Прямоугольник с крестом"
+
+#: widgets/command/alignitemcommand.cpp:140
+#, kde-format
+msgid "Align Items"
+msgstr "Выровнять объекты"
+
+#: widgets/command/deselectcommand.cpp:48
+#, kde-format
+msgid "Deselect Object"
+msgstr "Снять выделение с объекта"
+
+#: widgets/command/groupcommand.cpp:73
+#, kde-format
+msgid "Group Object"
+msgstr "Сгруппировать объект"
+
+#: widgets/command/insertitemcommand.cpp:74
+#, kde-format
+msgid "Insert Object"
+msgstr "Вставить объект"
+
+#: widgets/command/lineresizeitemcommand.cpp:77
+#, kde-format
+msgid "Resize Line"
+msgstr "Изменить размер линии"
+
+#: widgets/command/lockcommand.cpp:36
+#, kde-format
+msgid "Change Lock"
+msgstr "Изменить блокировку"
+
+#: widgets/command/moveitemcommand.cpp:72
+#, kde-format
+msgid "Move Object"
+msgstr "Переместить объект"
+
+#: widgets/command/removeitemcommand.cpp:76
+#, kde-format
+msgid "Remove Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "Удалить %1 объект"
+msgstr[1] "Удалить %1 объекта"
+msgstr[2] "Удалить %1 объектов"
+msgstr[3] "Удалить объект"
+
+#: widgets/command/resizeitemcommand.cpp:78
+#, kde-format
+msgid "Resize Object"
+msgstr "Изменить размер объекта"
+
+#: widgets/command/rotateitemcommand.cpp:64
+#, kde-format
+msgid "Rotate Object"
+msgstr "Повернуть объект"
+
+#: widgets/command/selectcommand.cpp:49
+#, kde-format
+msgid "Select Object"
+msgstr "Выбрать объект"
+
+#: widgets/command/ungroupcommand.cpp:88
+#, kde-format
+msgid "Ungroup Objects"
+msgstr "Разгруппировать объекты"
+
+#: widgets/components/bottomleftwidgets.cpp:41
+#, kde-format
+msgctxt "@label, percent text"
+msgid "100%"
+msgstr "100 %"
+
+#: widgets/components/bottomleftwidgets.cpp:42
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Reset Zoom"
+msgstr "Сбросить масштаб"
+
+#: widgets/components/bottomleftwidgets.cpp:53
+#, kde-format
+msgctxt "@label, percent value"
+msgid "%1%"
+msgstr "%1 %"
+
+#: widgets/components/toolbar.cpp:74
+#, kde-format
+msgctxt "@action:button"
+msgid "Image"
+msgstr "Изображение"
+
+#: widgets/components/toolbuttonplugin.cpp:65
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "More Tools"
+msgstr "Дополнительные инструменты"
+
+#: widgets/components/topleftwidgets.cpp:40
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Open Menu"
+msgstr "Открыть меню"
+
+#: widgets/context/aboutdata.cpp:13
+#, kde-format
+msgid "Drawy"
+msgstr "Drawy"
+
+#: widgets/context/aboutdata.cpp:15
+#, kde-format
+msgid "Your handy, infinite  brainstorming tool!"
+msgstr "Удобный безграничный инструмент для мозгового штурма"
+
+#: widgets/context/aboutdata.cpp:17
+#, kde-format
+msgctxt "Copyright text, keep the © symbol and the en dash for the year range"
+msgid "© 2025–%1 Drawy authors"
+msgstr "© Авторы Drawy, 2025–%1"
+
+#: widgets/context/aboutdata.cpp:19
+#, kde-format
+msgctxt "@info:credit"
+msgid "Prayag Jain"
+msgstr "Prayag Jain"
+
+#: widgets/context/aboutdata.cpp:19
+#, kde-format
+msgid "Maintainer"
+msgstr "Сопровождающий"
+
+#: widgets/context/aboutdata.cpp:20
+#, kde-format
+msgctxt "@info:credit"
+msgid "Laurent Montel"
+msgstr "Laurent Montel"
+
+#: widgets/context/aboutdata.cpp:20
+#, kde-format
+msgid "Developer"
+msgstr "Разработчик"
+
+#: widgets/context/uicontext.cpp:67
+#, kde-format
+msgctxt "@action:button"
+msgid "Selection"
+msgstr "Выделение"
+
+#: widgets/context/uicontext.cpp:68
+#, kde-format
+msgctxt "@action:button"
+msgid "Free Form"
+msgstr "От руки"
+
+#: widgets/context/uicontext.cpp:69
+#, kde-format
+msgctxt "@action:button"
+msgid "Rectangle"
+msgstr "Прямоугольник"
+
+#: widgets/context/uicontext.cpp:70
+#, kde-format
+msgctxt "@action:button"
+msgid "Diamond"
+msgstr "Ромб"
+
+#: widgets/context/uicontext.cpp:71
+#, kde-format
+msgctxt "@action:button"
+msgid "Ellipse"
+msgstr "Эллипс"
+
+#: widgets/context/uicontext.cpp:72
+#, kde-format
+msgctxt "@action:button"
+msgid "Arrow"
+msgstr "Стрелка"
+
+#: widgets/context/uicontext.cpp:73
+#, kde-format
+msgctxt "@action:button"
+msgid "Line"
+msgstr "Линия"
+
+#: widgets/context/uicontext.cpp:74
+#, kde-format
+msgctxt "@action:button"
+msgid "Eraser"
+msgstr "Ластик"
+
+#: widgets/context/uicontext.cpp:75
+#, kde-format
+msgctxt "@action:button"
+msgid "Text"
+msgstr "Текст"
+
+#: widgets/context/uicontext.cpp:76
+#, kde-format
+msgctxt "@action:button"
+msgid "Move"
+msgstr "Перемещение"
+
+#: widgets/context/uicontext.cpp:240
+#, kde-format
+msgctxt ""
+"Title of a submenu inside the context menu which allows users to reorder "
+"items"
+msgid "Reorder"
+msgstr "Изменение порядка"
+
+#: widgets/context/uicontext.cpp:250
+#, kde-format
+msgctxt ""
+"Title of a submenu inside the context menu which allows users to align items"
+msgid "Align"
+msgstr "Выравнивание"
+
+#: widgets/dbus/managepowermanagement.cpp:30
+#, kde-format
+msgctxt ""
+"Reason for inhibiting the screensaver activation, when the presentation mode "
+"is active"
+msgid "Giving a presentation"
+msgstr "Проводится презентация"
+
+#: widgets/dialog/configuresettingsdialog.cpp:31
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Drawy"
+msgstr "Настройка Drawy"
+
+#: widgets/dialog/configuresettingsdialog.cpp:34
+#, kde-format
+msgid "General"
+msgstr "Общие"
+
+#: widgets/dialog/configuresettingsdialog.cpp:39
+#, kde-format
+msgid "Input"
+msgstr "Ввод"
+
+#: widgets/dialog/configuresettingsdialog.cpp:45
+#, kde-format
+msgid "Misc"
+msgstr "Прочее"
+
+#: widgets/dialog/general/autosavewidget.cpp:22
+#, kde-format
+msgid "Session"
+msgstr "Сеанс"
+
+#: widgets/dialog/general/autosavewidget.cpp:30
+#, kde-format
+msgid "Time interval for automatic saving"
+msgstr "Интервал автоматического сохранения"
+
+#: widgets/dialog/general/autosavewidget.cpp:31
+#, kde-format
+msgctxt "@item %v is a number"
+msgid "%v minute"
+msgid_plural "%v minutes"
+msgstr[0] "%v минута"
+msgstr[1] "%v минуты"
+msgstr[2] "%v минут"
+msgstr[3] "%v минута"
+
+#: widgets/dialog/general/autosavewidget.cpp:34
+#, kde-format
+msgid "Directory for automatic saving"
+msgstr "Папка для автоматического сохранения"
+
+#: widgets/dialog/general/autosavewidget.cpp:45
+#, kde-format
+msgid "Open Directory"
+msgstr "Открыть папку"
+
+#: widgets/dialog/general/autosavewidget.cpp:54
+#, kde-format
+msgid "Restore previous session on start"
+msgstr "Восстанавливать предыдущий сеанс при запуске"
+
+#: widgets/dialog/general/canvascolorwidget.cpp:13
+#, kde-format
+msgid "Canvas"
+msgstr "Холст"
+
+#: widgets/dialog/general/canvascolorwidget.cpp:21
+#, kde-format
+msgid "Light background color"
+msgstr "Цвет светлого фона"
+
+#: widgets/dialog/general/canvascolorwidget.cpp:22
+#, kde-format
+msgid "Dark background color"
+msgstr "Цвет тёмного фона"
+
+#: widgets/dialog/general/defaultcolorswidget.cpp:14
+#, kde-format
+msgid "Color Palette"
+msgstr "Палитра цветов"
+
+#: widgets/dialog/general/defaultcolorswidget.cpp:44
+#, kde-format
+msgid "Light Mode"
+msgstr "Светлый режим"
+
+#: widgets/dialog/general/defaultcolorswidget.cpp:47
+#, kde-format
+msgid "Dark Mode"
+msgstr "Тёмный режим"
+
+#: widgets/dialog/input/freehandsettingswidget.cpp:17
+#, kde-format
+msgid "Freehand Settings"
+msgstr "Параметры рисования от руки"
+
+#: widgets/dialog/input/freehandsettingswidget.cpp:47
+#, kde-format
+msgid "Stabilization"
+msgstr "Стабилизация"
+
+#: widgets/dialog/input/freehandsettingswidget.cpp:47
+#, kde-format
+msgid "Makes lines steadier by reducing hand shake."
+msgstr "Уменьшает дрожание руки, делая линии более ровными."
+
+#: widgets/dialog/input/freehandsettingswidget.cpp:48
+#, kde-format
+msgid "Pressure Sensitivity"
+msgstr "Чувствительность к нажатию"
+
+#: widgets/dialog/input/freehandsettingswidget.cpp:48
+#, kde-format
+msgid "Controls how much pressure changes line thickness."
+msgstr "Управляет изменением толщины линии в зависимости от силы нажатия."
+
+#: widgets/dialog/misc/powermanagerwidget.cpp:13
+#, kde-format
+msgid "Power Manager"
+msgstr "Управление питанием"
+
+#: widgets/dialog/misc/powermanagerwidget.cpp:14
+#, kde-format
+msgid "Disable screenlocker during full screen"
+msgstr "Отключать блокировку экрана в полноэкранном режиме"
+
+#: widgets/drawycommandlineparser.cpp:19
+#, kde-format
+msgctxt "@info:shell"
+msgid "Fullscreen"
+msgstr "Запустить в полноэкранном режиме"
+
+#: widgets/drawycommandlineparser.cpp:20
+#, kde-format
+msgctxt "@info:shell"
+msgid "Activate Debug Mode"
+msgstr "Включить режим отладки"
+
+#: widgets/keybindings/actionmanager.cpp:79
+#, kde-format
+msgctxt "@action"
+msgid "Export as Image"
+msgstr "Экспортировать как изображение"
+
+#: widgets/keybindings/actionmanager.cpp:84
+#, kde-format
+msgctxt "@action"
+msgid "Group Items"
+msgstr "Сгруппировать объекты"
+
+#: widgets/keybindings/actionmanager.cpp:87
+#, kde-format
+msgctxt "@action"
+msgid "Ungroup Items"
+msgstr "Разгруппировать объекты"
+
+#: widgets/keybindings/actionmanager.cpp:92
+#, kde-format
+msgctxt "@action"
+msgid "Delete"
+msgstr "Удалить"
+
+#: widgets/keybindings/actionmanager.cpp:94
+#, kde-format
+msgctxt "@action"
+msgid "Clear Canvas"
+msgstr "Очистить холст"
+
+#: widgets/keybindings/actionmanager.cpp:97
+#, kde-format
+msgctxt "@action"
+msgid "Freeform Tool"
+msgstr "Инструмент «От руки»"
+
+#: widgets/keybindings/actionmanager.cpp:100
+#, kde-format
+msgctxt "@action"
+msgid "Eraser Tool"
+msgstr "Инструмент «Ластик»"
+
+#: widgets/keybindings/actionmanager.cpp:101
+#, kde-format
+msgctxt "@action"
+msgid "Selection Tool"
+msgstr "Инструмент «Выделение»"
+
+#: widgets/keybindings/actionmanager.cpp:102
+#, kde-format
+msgctxt "@action"
+msgid "Rectangle Tool"
+msgstr "Инструмент «Прямоугольник»"
+
+#: widgets/keybindings/actionmanager.cpp:103
+#, kde-format
+msgctxt "@action"
+msgid "Ellipse Tool"
+msgstr "Инструмент «Эллипс»"
+
+#: widgets/keybindings/actionmanager.cpp:104
+#, kde-format
+msgctxt "@action"
+msgid "Line Tool"
+msgstr "Инструмент «Линия»"
+
+#: widgets/keybindings/actionmanager.cpp:105
+#, kde-format
+msgctxt "@action"
+msgid "Text Tool"
+msgstr "Инструмент «Текст»"
+
+#: widgets/keybindings/actionmanager.cpp:106
+#, kde-format
+msgctxt "@action"
+msgid "Arrow Tool"
+msgstr "Инструмент «Стрелка»"
+
+#: widgets/keybindings/actionmanager.cpp:107
+#, kde-format
+msgctxt "@action"
+msgid "Move Tool"
+msgstr "Инструмент «Перемещение»"
+
+#: widgets/keybindings/actionmanager.cpp:108
+#, kde-format
+msgctxt "@action"
+msgid "Image Tool"
+msgstr "Инструмент «Изображение»"
+
+#: widgets/keybindings/actionmanager.cpp:109
+#, kde-format
+msgctxt "@action"
+msgid "Diamond Tool"
+msgstr "Инструмент «Ромб»"
+
+#: widgets/keybindings/actionmanager.cpp:111
+#, kde-format
+msgctxt "@action"
+msgid "Send To Back"
+msgstr "На задний план"
+
+#: widgets/keybindings/actionmanager.cpp:114
+#, kde-format
+msgctxt "@action"
+msgid "Send Backward"
+msgstr "Назад на один уровень"
+
+#: widgets/keybindings/actionmanager.cpp:117
+#, kde-format
+msgctxt "@action"
+msgid "Bring Forward"
+msgstr "Вперёд на один уровень"
+
+#: widgets/keybindings/actionmanager.cpp:120
+#, kde-format
+msgctxt "@action"
+msgid "Bring To Front"
+msgstr "На передний план"
+
+#: widgets/keybindings/actionmanager.cpp:124
+#, kde-format
+msgctxt "@action"
+msgid "Align Top"
+msgstr "Выровнять по верхнему краю"
+
+#: widgets/keybindings/actionmanager.cpp:127
+#, kde-format
+msgctxt "@action"
+msgid "Center Vertically"
+msgstr "Центрировать по вертикали"
+
+#: widgets/keybindings/actionmanager.cpp:130
+#, kde-format
+msgctxt "@action"
+msgid "Align Bottom"
+msgstr "Выровнять по нижнему краю"
+
+#: widgets/keybindings/actionmanager.cpp:133
+#, kde-format
+msgctxt "@action"
+msgid "Align Left"
+msgstr "Выровнять по левому краю"
+
+#: widgets/keybindings/actionmanager.cpp:136
+#, kde-format
+msgctxt "@action"
+msgid "Center Horizontally"
+msgstr "Центрировать по горизонтали"
+
+#: widgets/keybindings/actionmanager.cpp:139
+#, kde-format
+msgctxt "@action"
+msgid "Align Right"
+msgstr "Выровнять по правому краю"
+
+#: widgets/keybindings/actionmanager.cpp:143
+#, kde-format
+msgctxt "@action"
+msgid "Debug"
+msgstr "Отладка"
+
+#: widgets/keybindings/actionmanager.cpp:476
+#, kde-format
+msgid "Untitled.%1"
+msgstr "Безымянный.%1"
+
+#: widgets/keybindings/actionmanager.cpp:478
+#: widgets/keybindings/actionmanager.cpp:542
+#, kde-format
+msgid "Drawy (*.%1)"
+msgstr "Drawy (*.%1)"
+
+#: widgets/keybindings/actionmanager.cpp:479
+#, kde-format
+msgctxt "@title:window"
+msgid "Save File"
+msgstr "Сохранение файла"
+
+#: widgets/keybindings/actionmanager.cpp:501
+#, kde-format
+msgctxt "@action"
+msgid "Do you really want to clear the canvas?"
+msgstr "Очистить холст?"
+
+#: widgets/keybindings/actionmanager.cpp:502
+#, kde-format
+msgctxt "@action"
+msgid "Clear"
+msgstr "Очистить"
+
+#: widgets/keybindings/actionmanager.cpp:545
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr "Открытие файла"
+
+#: widgets/keybindings/actionmanager.cpp:558
+#, kde-format
+msgid "Untitled.svg"
+msgstr "Безымянный.svg"
+
+#: widgets/keybindings/actionmanager.cpp:561
+#, kde-format
+msgid "SVG (*.svg)"
+msgstr "SVG (*.svg)"
+
+#: widgets/keybindings/actionmanager.cpp:562
+#, kde-format
+msgid "PNG (*.png)"
+msgstr "PNG (*.png)"
+
+#: widgets/keybindings/actionmanager.cpp:566
+#, kde-format
+msgctxt "@title:window"
+msgid "Export to Image"
+msgstr "Экспорт в изображение"
+
+#: widgets/keybindings/actionmanager.cpp:632
+#, kde-format
+msgid ""
+"The document \"%1\" has been modified.\n"
+"Do you want to save your changes or discard them?"
+msgstr ""
+"Документ «%1» был изменён.\n"
+"Сохранить изменения или отказаться от них?"
+
+#: widgets/keybindings/actionmanager.cpp:636
+#, kde-format
+msgctxt "@title:window"
+msgid "Action Required"
+msgstr "Требуется действие"
+
+#: widgets/properties/widgets/actionswidget.cpp:31
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Delete selection"
+msgstr "Удалить выделенное"
+
+#: widgets/properties/widgets/actionswidget.cpp:32
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Group selection"
+msgstr "Сгруппировать выделенное"
+
+#: widgets/properties/widgets/actionswidget.cpp:33
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Ungroup selection"
+msgstr "Разгруппировать выделенное"
+
+#: widgets/properties/widgets/alignmentwidget.cpp:64
+#, kde-format
+msgid "Alignment"
+msgstr "Выравнивание"
+
+#: widgets/properties/widgets/arrowtypewidget.cpp:41
+#, kde-format
+msgctxt "Tooltip for arrow head"
+msgid "None"
+msgstr "Нет"
+
+#: widgets/properties/widgets/arrowtypewidget.cpp:42
+#, kde-format
+msgctxt "Tooltip for arrow head"
+msgid "Open Arrow"
+msgstr "Открытая стрелка"
+
+#: widgets/properties/widgets/arrowtypewidget.cpp:43
+#, kde-format
+msgctxt "Tooltip for arrow head"
+msgid "Triangle"
+msgstr "Треугольник"
+
+#: widgets/properties/widgets/arrowtypewidget.cpp:44
+#, kde-format
+msgctxt "Tooltip for arrow head"
+msgid "Filled Triangle"
+msgstr "Залитый треугольник"
+
+#: widgets/properties/widgets/arrowtypewidget.cpp:45
+#, kde-format
+msgctxt "Tooltip for arrow head"
+msgid "Circle"
+msgstr "Круг"
+
+#: widgets/properties/widgets/arrowtypewidget.cpp:46
+#, kde-format
+msgctxt "Tooltip for arrow head"
+msgid "Diamond"
+msgstr "Ромб"
+
+#: widgets/properties/widgets/arrowtypewidget.cpp:74
+#, kde-format
+msgctxt "Tooltip for a button to change arrow head"
+msgid "Select Arrow Head"
+msgstr "Выбор наконечника стрелки"
+
+#: widgets/properties/widgets/backgroundcolorwidget.cpp:21
+#, kde-format
+msgid "Background Color"
+msgstr "Цвет фона"
+
+#: widgets/properties/widgets/backgroundstylewidget.cpp:30
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "None"
+msgstr "Нет"
+
+#: widgets/properties/widgets/backgroundstylewidget.cpp:39
+#: widgets/properties/widgets/stokestylewidget.cpp:28
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Solid"
+msgstr "Сплошной"
+
+#: widgets/properties/widgets/backgroundstylewidget.cpp:48
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Diagonal Cross"
+msgstr "Косая сетка"
+
+#: widgets/properties/widgets/backgroundstylewidget.cpp:57
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Diagonal"
+msgstr "Косая штриховка"
+
+#: widgets/properties/widgets/backgroundstylewidget.cpp:78
+#, kde-format
+msgid "Background Style"
+msgstr "Стиль фона"
+
+#: widgets/properties/widgets/colorwidgetbase.cpp:70
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Select Custom Color"
+msgstr "Выбрать произвольный цвет"
+
+#: widgets/properties/widgets/colorwidgetbase.cpp:119
+#, kde-format
+msgid "Color"
+msgstr "Цвет"
+
+#: widgets/properties/widgets/endarrowtypewidget.cpp:20
+#, kde-format
+msgctxt "Name of a property"
+msgid "End Arrow Head"
+msgstr "Конечный наконечник стрелки"
+
+#: widgets/properties/widgets/erasersizewidget.cpp:31
+#, kde-format
+msgid "Eraser Size"
+msgstr "Размер ластика"
+
+#: widgets/properties/widgets/fontsizewidget.cpp:38
+#, kde-format
+msgid "Font Size"
+msgstr "Размер шрифта"
+
+#: widgets/properties/widgets/opacitywidget.cpp:99
+#, kde-format
+msgid "Opacity"
+msgstr "Непрозрачность"
+
+#: widgets/properties/widgets/startarrowtypewidget.cpp:21
+#, kde-format
+msgctxt "Name of a property"
+msgid "Start Arrow Head"
+msgstr "Начальный наконечник стрелки"
+
+#: widgets/properties/widgets/stokestylewidget.cpp:35
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Dashed"
+msgstr "Штриховая"
+
+#: widgets/properties/widgets/stokestylewidget.cpp:42
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Dotted"
+msgstr "Пунктирная"
+
+#: widgets/properties/widgets/stokestylewidget.cpp:63
+#, kde-format
+msgid "Stroke Style"
+msgstr "Стиль обводки"
+
+#: widgets/properties/widgets/strokecolorwidget.cpp:20
+#, kde-format
+msgid "Stroke Color"
+msgstr "Цвет обводки"
+
+#: widgets/properties/widgets/strokewidthwidget.cpp:31
+#, kde-format
+msgid "Thickness"
+msgstr "Толщина"
+
+#: widgets/properties/widgets/zorderwidget.cpp:46
+#, kde-format
+msgid "Order"
+msgstr "Порядок"
+
+#: widgets/tools/imagetool.cpp:37
+#, kde-format
+msgid "Image"
+msgstr "Изображение"
+
+#: widgets/tools/imagetool.cpp:56
+#, kde-format
+msgctxt "@title:window"
+msgid "Insert Image"
+msgstr "Вставка изображения"
+
+#: widgets/window/window.cpp:184
+#, kde-format
+msgctxt "@title:window %1 is a filename"
+msgid "%1 — Drawy"
+msgstr "%1 — Drawy"
