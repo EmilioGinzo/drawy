@@ -149,11 +149,6 @@ void LineItem::deserialize(const QJsonObject &obj)
     deserializer.deserialize(obj);
 }
 
-bool LineItem::operator==(const LineItem &other) const
-{
-    return m_start == other.start() && m_end == other.end() && Item::operator==(other);
-}
-
 QList<TransformHandlerUtils::Type> LineItem::transformHandlers() const
 {
     using enum TransformHandlerUtils::Type;

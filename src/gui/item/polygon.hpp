@@ -29,7 +29,7 @@ public:
     [[nodiscard]] QJsonObject serialize(int zorder) const override;
     void deserialize(const QJsonObject &obj) override;
 
-    [[nodiscard]] bool operator==(const PolygonItem &other) const;
+    [[nodiscard]] bool operator==(const PolygonItem &other) const = default;
 
     [[nodiscard]] QList<Property::Type> propertyTypes() const override;
 

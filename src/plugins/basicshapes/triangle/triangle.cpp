@@ -76,11 +76,6 @@ void TriangleItem::deserialize(const QJsonObject &obj)
     deserializer.deserialize(obj);
 }
 
-bool TriangleItem::operator==(const TriangleItem &other) const
-{
-    return start() == other.start() && PolygonItem::operator==(other);
-}
-
 PluginForm::PluginFormInfo TriangleItem::pluginFormInfo()
 {
     const PluginForm::PluginFormInfo info{

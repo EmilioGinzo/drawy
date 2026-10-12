@@ -111,11 +111,6 @@ void PolygonItem::deserialize(const QJsonObject &obj)
     deserializer.deserialize(obj);
 }
 
-bool PolygonItem::operator==(const PolygonItem &other) const
-{
-    return m_start == other.start() && m_end == other.end() && Item::operator==(other);
-}
-
 void PolygonItem::commitTransformation()
 {
     const auto [scaleX, scaleY]{Common::Utils::Math::extractScale(m_transform)};

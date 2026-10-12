@@ -63,11 +63,6 @@ void XBoxItem::deserialize(const QJsonObject &obj)
     deserializer.deserialize(obj);
 }
 
-bool XBoxItem::operator==(const XBoxItem &other) const
-{
-    return start() == other.start() && PolygonItem::operator==(other);
-}
-
 PluginForm::PluginFormInfo XBoxItem::pluginFormInfo()
 {
     const PluginForm::PluginFormInfo info{

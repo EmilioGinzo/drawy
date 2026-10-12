@@ -24,7 +24,7 @@ public:
     [[nodiscard]] QJsonObject serialize(int zorder) const override;
     void deserialize(const QJsonObject &obj) override;
 
-    [[nodiscard]] bool operator==(const XBoxItem &other) const;
+    [[nodiscard]] bool operator==(const XBoxItem &other) const = default;
     [[nodiscard]] static PluginForm::PluginFormInfo pluginFormInfo();
 
 protected:

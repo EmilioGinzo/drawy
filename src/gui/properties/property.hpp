@@ -119,7 +119,7 @@ public:
     [[nodiscard]] static QString convertEnumToString(Property::Type type);
     [[nodiscard]] static QString information(Property::Type type);
 
-    [[nodiscard]] bool operator==(const Property &other) const;
+    [[nodiscard]] bool operator==(const Property &other) const = default;
 
 private:
     QVariant m_value{};

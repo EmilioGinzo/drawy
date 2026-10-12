@@ -75,8 +75,3 @@ void DiamondItem::deserialize(const QJsonObject &obj)
     DiamondDeserializer deserializer(this);
     deserializer.deserialize(obj);
 }
-
-bool DiamondItem::operator==(const DiamondItem &other) const
-{
-    return start() == other.start() && PolygonItem::operator==(other);
-}

@@ -23,7 +23,7 @@ public:
     [[nodiscard]] QJsonObject serialize(int zorder) const override;
     void deserialize(const QJsonObject &obj) override;
 
-    [[nodiscard]] bool operator==(const DiamondItem &other) const;
+    [[nodiscard]] bool operator==(const DiamondItem &other) const = default;
 
 protected:
     void drawItem(QPainter &painter, const QPointF &offset) const override;

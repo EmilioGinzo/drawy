@@ -35,7 +35,7 @@ public:
 
     [[nodiscard]] QList<TransformHandlerUtils::Type> transformHandlers() const override;
 
-    [[nodiscard]] bool operator==(const LineItem &other) const;
+    [[nodiscard]] bool operator==(const LineItem &other) const = default;
 
 protected:
     void drawItem(QPainter &painter, const QPointF &offset) const override;
