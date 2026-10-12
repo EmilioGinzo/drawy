@@ -47,6 +47,7 @@ BottomLeftWidgets::BottomLeftWidgets(ActionManager *actionManager, PageManager *
     zoomLabel->setText(i18nc("@label, percent text", "100%"));
     zoomLabel->setAutoRaise(true);
     zoomLabel->setToolTip(i18nc("@info:tooltip", "Reset Zoom"));
+    zoomLabel->setMinimumHeight(zoomOutButton->sizeHint().height());
 
     connect(zoomLabel, &QToolButton::clicked, this, &BottomLeftWidgets::resetZoom);
 
@@ -60,7 +61,7 @@ BottomLeftWidgets::BottomLeftWidgets(ActionManager *actionManager, PageManager *
         zoomLabel->setText(i18nc("@label, percent value", "%1%", zoomValue));
     });
 
-    zoomControlLayout->setSpacing(style()->pixelMetric(QStyle::PM_ToolBarItemMargin));
+    zoomControlLayout->setSpacing(0);
     zoomControlLayout->addWidget(zoomOutButton);
     zoomControlLayout->addWidget(zoomLabel);
     zoomControlLayout->addWidget(zoomInButton);
@@ -87,7 +88,7 @@ BottomLeftWidgets::BottomLeftWidgets(ActionManager *actionManager, PageManager *
     nextPageButton->setIconSize(iconSize);
     nextPageButton->setDefaultAction(actionManager->action(ActionManager::Action::NextPage));
 
-    pageControlLayout->setSpacing(style()->pixelMetric(QStyle::PM_ToolBarItemMargin));
+    pageControlLayout->setSpacing(0);
     pageControlLayout->addWidget(previousPageButton);
     pageControlLayout->addWidget(m_pageButton);
     pageControlLayout->addWidget(nextPageButton);
