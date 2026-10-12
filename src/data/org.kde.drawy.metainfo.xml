@@ -21,6 +21,7 @@
   <name xml:lang="lt">Drawy</name>
   <name xml:lang="nl">Drawy</name>
   <name xml:lang="pt-BR">Drawy</name>
+  <name xml:lang="ru">Drawy</name>
   <name xml:lang="sk">Drawy</name>
   <name xml:lang="sl">Drawy</name>
   <name xml:lang="tr">Drawy</name>
@@ -46,6 +47,7 @@
   <summary xml:lang="lt">Patogus, begalinis naujų idėjų svarstymo įrankis</summary>
   <summary xml:lang="nl">Uw handige, oneindige hulpmiddel voor brainstormen</summary>
   <summary xml:lang="pt-BR">Sua ferramenta prática e infinita para brainstorming</summary>
+  <summary xml:lang="ru">Удобный безграничный инструмент для мозгового штурма</summary>
   <summary xml:lang="sk">Váš šikovný, nekonečný nástroj na brainstorming</summary>
   <summary xml:lang="sl">Vaše priročno, neskončno orodje za viharjenje možgan</summary>
   <summary xml:lang="tr">Kullanışlı, sınırsız beyin fırtınası aracın!</summary>
@@ -76,6 +78,7 @@
     <p xml:lang="lt">Drawy jums leidžia baltojoje lentoje kurti idėjas, diagramas ir vaizdinius užrašus naudojant glotnią ir jautrią piešimo drobę. Galite piešti naudodami spaudimui jautrios planšetės palaikymą, pridėti tekstą, įterpti paveikslus ir naudoti pagrindines figūras, tokias kaip stačiakampiai, elipsės, rodyklės ir linijos, kad aiškiai išdėstytumėte turinį. Galite rinktis nuosavą spalvų paletę ir, prireikus, eksportuoti savo kūrinį kaip paveikslo failus. Programa Drawy sukurta taip, kad būtų supaprastinta ir greita, kas leidžia lengvai įamžinti idėjas ir dirbti be jokio išsiblaškymo.</p>
     <p xml:lang="nl">Met Drawy creëert u ideeën, diagrammen en visuele notities op een oneindig whiteboard met een vloeiend en responsief werkveld. U kunt tekenen met drukgevoelige tabletondersteuning, tekst toevoegen, afbeeldingen invoegen en basisvormen zoals rechthoeken, ellipsen, pijlen en lijnen gebruiken om uw inhoud overzichtelijk te ordenen. U kunt uw eigen kleurenpalet kiezen en uw werk exporteren als afbeeldingsbestanden wanneer dat nodig is. Drawy is ontworpen om lichtgewicht en snel te blijven, waardoor het gemakkelijk is om ideeën vast te leggen en ongestoord te werken.</p>
     <p xml:lang="pt-BR">O Drawy permite que você crie ideias, diagramas e anotações visuais em um quadro branco infinito com uma tela suave e responsiva. Você pode desenhar com suporte para tablets sensíveis à pressão, adicionar texto, inserir imagens e usar formas básicas como retângulos, elipses, setas e linhas para organizar seu conteúdo com clareza. Você pode escolher sua própria paleta de cores e exportar seu trabalho como arquivos de imagem sempre que necessário. O Drawy foi desenvolvido para ser leve e rápido, facilitando a captura de ideias e o trabalho livre, sem distrações.</p>
+    <p xml:lang="ru">Drawy позволяет записывать идеи, рисовать диаграммы и делать наглядные заметки на бесконечной доске с плавным и отзывчивым холстом. Поддерживается рисование на планшете с учётом силы нажатия, добавление текста, вставка изображений и простые фигуры — прямоугольники, эллипсы, стрелки и линии — для наглядной организации содержимого. Можно выбрать собственную цветовую палитру и в любой момент экспортировать работу в файлы изображений. Drawy — лёгкое и быстрое приложение: идеи легко записать, а работать можно свободно, ни на что не отвлекаясь.</p>
     <p xml:lang="sk">Drawy vám umožňuje vytvárať nápady, diagramy a vizuálne poznámky na nekonečnej tabuli s plynulým a citlivým plátnom. Môžete kresliť s podporou tabletu citlivého na tlak, pridávať text, vkladať obrázky a používať základné tvary ako obdĺžniky, elipsy, šípky a čiary na prehľadné usporiadanie vášho obsahu. Môžete si zvoliť vlastnú farebnú paletu a podľa potreby exportovať svoju prácu ako obrázkové súbory. Drawy je vyvinutý tak, aby zostal nenáročný a rýchly, vďaka čomu je jednoduché zachytávať nápady a pracovať bez rušivých vplyvov.</p>
     <p xml:lang="sl">Drawy vam omogoča ustvarjanje idej, diagramov in vizualnih zapiskov na neskončni beli tabli z gladkim in odzivnim platnom. Rišete lahko s podporo za tablico, občutljivo na pritisk, dodajate besedilo, vstavljate slike in uporabljate osnovne oblike, kot so pravokotniki, elipse, puščice in črte, da jasno organizirate svojo vsebino. Izberete lahko svojo barvno paleto in svoje delo izvozite kot slikovne datoteke, kadar koli je to potrebno. Drawy je zasnovan tako, da ostane lahek in hiter, kar omogoča enostavno zajemanje idej in prosto delo brez motenj.</p>
     <p xml:lang="tr">Drawy, akıcı ve duyarlı bir tuval üzerinde sonsuz bir beyaz tahtada fikirler, diyagramlar ve görsel notlar oluşturmanıza olanak tanır. Basınca duyarlı tablet desteğiyle çizim yapabilir, metin ekleyebilir, görseller ekleyebilir ve içeriğinizi net bir şekilde düzenlemek için dikdörtgenler, elipsler, oklar ve çizgiler gibi temel şekilleri kullanabilirsiniz. Kendi renk paletinizi seçebilir ve gerektiğinde çalışmalarınızı görsel dosyaları olarak dışa aktarabilirsiniz. Drawy, hafif ve hızlı kalacak şekilde tasarlanmıştır, bu da fikirleri yakalamayı ve dikkat dağıtıcı unsurlar olmadan özgürce çalışmayı kolaylaştırır.</p>
@@ -139,6 +142,7 @@
       <caption xml:lang="lt">Kurti begalinėje baltojoje lentoje diagramas, užrašus ir idėjas.</caption>
       <caption xml:lang="nl">Maak diagrammen, notities en ideeën op een oneindig whiteboard.</caption>
       <caption xml:lang="pt-BR">Crie diagramas, anotações e ideias em um quadro branco infinito.</caption>
+      <caption xml:lang="ru">Диаграммы, заметки и идеи на бесконечной доске.</caption>
       <caption xml:lang="sk">Vytvárajte diagramy, poznámky a nápady na nekonečnej tabuli.</caption>
       <caption xml:lang="sl">Ustvarjajte diagrame, zapiske in ideje na neskončni beli tabli.</caption>
       <caption xml:lang="tr">Sonsuz beyaz tahta üzerinde diyagramlar, notlar ve fikirler oluşturun.</caption>
@@ -164,6 +168,7 @@
       <caption xml:lang="lt">Lengvai derinti spalvas, brūkštelėjimų stilius ir įrankius.</caption>
       <caption xml:lang="nl">Pas kleuren, lijnstijlen en gereedschappen eenvoudig aan.</caption>
       <caption xml:lang="pt-BR">Ajuste cores, estilos de traço e ferramentas com facilidade.</caption>
+      <caption xml:lang="ru">Лёгкая настройка цветов, стилей обводки и инструментов.</caption>
       <caption xml:lang="sk">Jednoducho upravujte farby, štýly ťahov a nástroje.</caption>
       <caption xml:lang="sl">Z lahkoto prilagajajte barve, sloge potez in orodja.</caption>
       <caption xml:lang="tr">Renkleri, çizgi stillerini ve araçları kolayca ayarlayın.</caption>
@@ -189,6 +194,7 @@
       <caption xml:lang="lt">Nesiblaškykite naudodami tamsios veiksenos darbo sritį.</caption>
       <caption xml:lang="nl">Blijf geconcentreerd met een donkere werkruimte.</caption>
       <caption xml:lang="pt-BR">Mantenha o foco com um espaço de trabalho em modo escuro.</caption>
+      <caption xml:lang="ru">Тёмный режим рабочей области помогает сосредоточиться.</caption>
       <caption xml:lang="sk">Zostaňte sústredení s pracovným priestorom v tmavom režime.</caption>
       <caption xml:lang="sl">Ostanite osredotočeni s temnim delovnim prostorom.</caption>
       <caption xml:lang="tr">Koyu kipli çalışma alanı ile dikkatinizi dağıtmayın.</caption>
@@ -214,6 +220,7 @@
       <caption xml:lang="lt">Dirbkite sklandžiai naudodami greitus ir jautrius įrankius.</caption>
       <caption xml:lang="nl">Werk soepel met snelle en responsieve hulpmiddelen.</caption>
       <caption xml:lang="pt-BR">Trabalhe sem problemas com ferramentas rápidas e responsivas.</caption>
+      <caption xml:lang="ru">Плавная работа с быстрыми и отзывчивыми инструментами.</caption>
       <caption xml:lang="sk">Pracujte plynulo s rýchlymi a citlivými nástrojmi.</caption>
       <caption xml:lang="sl">Delajte gladko s hitrimi in odzivnimi orodji.</caption>
       <caption xml:lang="tr">Hızlı ve duyarlı araçlarla sorunsuz çalışın.</caption>
@@ -234,6 +241,7 @@
         <p xml:lang="lt">Pridėtas puslapių palaikymas</p>
         <p xml:lang="nl">Ondersteuning voor pagina toevoegen</p>
         <p xml:lang="pt-BR">Adicionado suporte à páginas</p>
+        <p xml:lang="ru">Добавлена поддержка страниц</p>
         <p xml:lang="sl">Dodana podpora strani</p>
         <p xml:lang="tr">Sayfa desteği eklendi.</p>
         <p xml:lang="uk">Додано підтримку сторінок</p>
@@ -251,6 +259,7 @@
         <p xml:lang="lt">Pagerintas tekstinių elementų palaikymas (Rašybos tikrinimas, lygiavimas, pusjuodis tekstas, kursyvinis tekstas ir t.t.) (GSoc2026)</p>
         <p xml:lang="nl">Tekstelement ondersteuning verbeterd (Spellingcontrole, uitlijning, vet, cursief etc.) (GSoc2026)</p>
         <p xml:lang="pt-BR">Melhoria do suporte a elementos de texto (verificação ortográfica, alinhamento, negrito, itálico, etc.) (GSoC 2026)</p>
+        <p xml:lang="ru">Улучшена поддержка текстовых элементов (проверка орфографии, выравнивание, полужирный, курсив и т.д.) (GSoc2026)</p>
         <p xml:lang="sk">Vylepšená podpora textových prvkov (kontrola pravopisu, zarovnanie, tučné, kurzíva atď.) (GSoC 2026)</p>
         <p xml:lang="sl">Izboljšana podpora za besedilne elemente (preverjanje črkovanja, poravnava, krepko, poševno itd.) (GSoc2026)</p>
         <p xml:lang="tr">Metin ögesi desteği iyileştirildi (yazım denetimi, hizalama, kalın, yatık vb.).</p>
@@ -270,6 +279,7 @@
         <p xml:lang="lt">Leisti užrakinti elementus</p>
         <p xml:lang="nl">Sta vergrendelen van items toe</p>
         <p xml:lang="pt-BR">Permitir bloquear itens</p>
+        <p xml:lang="ru">Добавлена возможность блокировать объекты</p>
         <p xml:lang="sk">Možnosť zamknúť položky</p>
         <p xml:lang="sl">Dovoli zaklepanje elementov</p>
         <p xml:lang="tr">Ögeleri kilitleme desteği eklendi.</p>
@@ -289,6 +299,7 @@
         <p xml:lang="lt">Leisti piešti stačiakampį apvaliais kampais</p>
         <p xml:lang="nl">Sta afgeronde rechthoek tekenen toe</p>
         <p xml:lang="pt-BR">Permitir desenhar um retângulo arredondado</p>
+        <p xml:lang="ru">Добавлено рисование скруглённых прямоугольников</p>
         <p xml:lang="sk">Možnosť kresliť zaoblený obdĺžnik</p>
         <p xml:lang="sl">Omogoča risanje zaobljenega pravokotnika</p>
         <p xml:lang="tr">Yuvarlatılmış dörtgen çizme olanağı sağlandı.</p>
@@ -309,6 +320,7 @@
         <p xml:lang="lt">Patobulinta pasirinkta pagrindinė figūra (klaida 519895)</p>
         <p xml:lang="nl">Geselecteerde basisvorm verbeteren (bug 519895)</p>
         <p xml:lang="pt-BR">Melhoria da forma básica selecionada (bug 519895)</p>
+        <p xml:lang="ru">Улучшена работа с выделенной основной фигурой (ошибка 519895)</p>
         <p xml:lang="sk">Vylepšený vybraný základný tvar (chyba 519895)</p>
         <p xml:lang="sl">Izboljšana izbrana osnovna oblika (napaka 519895)</p>
         <p xml:lang="tr">Seçili temel şekiller iyileştirildi (519895 numaralı hata)</p>
@@ -330,6 +342,7 @@
         <p xml:lang="lt">Leisti eksportuoti pažymėtus elementus kaip paveikslą</p>
         <p xml:lang="nl">Exporteer geselecteerde elementen als afbeelding</p>
         <p xml:lang="pt-BR">Permitir exportar os elementos selecionados como imagem</p>
+        <p xml:lang="ru">Добавлен экспорт выбранных элементов в изображение</p>
         <p xml:lang="sk">Umožňuje exportovať vybrané prvky ako obrázok</p>
         <p xml:lang="sl">Dovoli izvoz izbranih elementov kot sliko</p>
         <p xml:lang="tr">Seçili ögelerin görsel olarak dışa aktarılmasına olanak tanıyın.</p>
@@ -350,6 +363,7 @@
         <p xml:lang="lt">Pridėtas „Kas naujo“ dialogas</p>
         <p xml:lang="nl">Dialoog Wat is er nieuw toegevoegd</p>
         <p xml:lang="pt-BR">Adicionado o diálogo "O que há de novo"</p>
+        <p xml:lang="ru">Добавлен диалог «Что нового»</p>
         <p xml:lang="sk">Pridaný dialóg Čo je nové</p>
         <p xml:lang="sl">Dodano pogovorno okno »Kaj je novega«</p>
         <p xml:lang="tr">“Neler Yeni” iletişim kutusu eklendi.</p>
@@ -374,6 +388,7 @@
         <p xml:lang="lt">Šis atnaujinimas pristato glotnesnį ir labiau tinkinamą piešimo ranka patyrimą ir ištaiso klaida, dėl kurios naujai nupieštos linijos mirgėjo.</p>
         <p xml:lang="nl">Deze update zorgt voor een soepelere en meer aanpasbare tekenervaring uit de vrije hand en verhelpt een probleem waarbij nieuw getekende lijnen flikkerden.</p>
         <p xml:lang="pt-BR">Esta atualização oferece uma experiência de desenho à mão livre mais personalizável e suave, e corrige um problema onde novas linhas desenhadas piscavam.</p>
+        <p xml:lang="ru">В этом обновлении рисование от руки стало плавнее и гибче в настройке, а также исправлено мерцание только что нарисованных линий.</p>
         <p xml:lang="sk">Táto aktualizácia prináša plynulejšie a lepšie prispôsobiteľné kreslenie voľnou rukou a opravuje blikanie novo nakreslených čiar.</p>
         <p xml:lang="sl">Ta posodobitev zagotavlja bolj gladko in prilagodljivo izkušnjo risanja s prosto roko ter odpravlja težavo, pri kateri so na novo narisane črte utripale.</p>
         <p xml:lang="tr">Bu güncelleme, daha akıcı ve özelleştirilebilir bir serbest çizim deneyimi sunuyor ve yeni çizilen çizgilerin titremesine neden olan bir sorunu gideriyor.</p>
@@ -397,6 +412,7 @@
           <li xml:lang="lt">Piešimas ranka dabar atrodo žymiai natūralesnis.</li>
           <li xml:lang="nl">Tekenen met de hand voelt nu veel beter en natuurlijker aan.</li>
           <li xml:lang="pt-BR">Desenhar com a mão é muito melhor e mais natural agora.</li>
+          <li xml:lang="ru">Гораздо более приятное и естественное рисование от руки.</li>
           <li xml:lang="sk">Kreslenie rukou je teraz oveľa príjemnejšie a prirodzenejšie.</li>
           <li xml:lang="sl">Risanje z roko se zdaj zdi veliko boljše in bolj naravno.</li>
           <li xml:lang="tr">Elle çizim yapmak artık çok daha iyi ve doğal bir his veriyor.</li>
@@ -419,6 +435,7 @@
           <li xml:lang="lt">Pridėtos nuostatos, kad galėtumėte keisti rašiklio spaudimą ir linijų glotnumą.</li>
           <li xml:lang="nl">Er zijn instellingen toegevoegd waarmee u de pendruk en de vloeiendheid van uw lijnen kunt aanpassen.</li>
           <li xml:lang="pt-BR">Adicionadas configurações para que você possa mudar a pressão da caneta e quão suaves serão os visuais das linhas.</li>
+          <li xml:lang="ru">Добавлены параметры, позволяющие настроить силу нажатия пера и сглаживание линий.</li>
           <li xml:lang="sk">Pribudli nastavenia, ktorými zmeníte tlak pera a hladkosť čiar.</li>
           <li xml:lang="sl">Dodane nastavitve za spreminjanje pritiska peresa in gladkosti črt.</li>
           <li xml:lang="tr">Kalem basıncını ve çizgilerin ne kadar pürüzsüz görüneceğini değiştirebileceğiniz ayarlar eklendi.</li>
@@ -441,6 +458,7 @@
           <li xml:lang="lt">Linijos ir figūros, tik jas nupiešus, daugiau nebemirgės ir nebemirksės.</li>
           <li xml:lang="nl">Lijnen en vormen zullen niet langer knipperen of flitsen direct nadat u ze hebt getekend.</li>
           <li xml:lang="pt-BR">Linhas e formas não vão mais piscar logo após desenhá-las.</li>
+          <li xml:lang="ru">Линии и фигуры больше не будут мигать или вспыхивать сразу после создания.</li>
           <li xml:lang="sk">Čiary a tvary už hneď po nakreslení neblikajú.</li>
           <li xml:lang="sl">Črte in oblike ne bodo več utripale takoj po risanju.</li>
           <li xml:lang="tr">Çizdiğiniz çizgiler ve şekiller artık hemen ardından yanıp sönmeyecek veya titreşmeyecek.</li>
@@ -468,6 +486,7 @@
         <p xml:lang="lt">Tai yra maža pataisa, kuri pagerina piktogramas, atnaujina „Appstream“ metaduomenis, kad juose būtų teisinga informacija, ir ištaiso keletą klaidų.</p>
         <p xml:lang="nl">Dit is een kleine patch die de pictogrammen verbetert, de appstream-metagegevens bijwerkt met de juiste informatie en enkele reparaties van fouten bevat.</p>
         <p xml:lang="pt-BR">Esta é uma pequena atualização que melhora os ícones, atualiza os metadados do appstream para incluir as informações corretas e inclui algumas correções de bugs.</p>
+        <p xml:lang="ru">Небольшое исправление: улучшены значки, в метаданные AppStream внесены верные сведения, исправлены некоторые ошибки.</p>
         <p xml:lang="sk">Ide o malú opravu, ktorá vylepšuje ikony, aktualizuje metadáta appstream s obsahom správnych informácií a zahŕňa niekoľko opráv chýb.</p>
         <p xml:lang="sl">To je majhen popravek, ki izboljšuje ikone, posodablja metapodatke aplikacij, da vključujejo pravilne informacije, in vključuje nekaj popravkov napak.</p>
         <p xml:lang="tr">Bu; simgeleri iyileştiren, AppStream üst verilerini doğru bilgileri içerecek şekilde güncelleyen ve bazı hata düzeltmeleri içeren küçük bir yamadır.</p>
@@ -496,6 +515,7 @@
         <p xml:lang="lt">Po ilgų mėnesių darbo Drawy pagaliau išleista! Drawy jums leidžia baltojoje lentoje kurti idėjas, diagramas ir vaizdinius užrašus naudojant glotnią ir jautrią piešimo drobę. Galite piešti naudodami spaudimui jautrios planšetės palaikymą, pridėti tekstą, įterpti paveikslus ir naudoti pagrindines figūras, tokias kaip stačiakampiai, elipsės, rodyklės ir linijos, kad aiškiai išdėstytumėte turinį. Galite rinktis nuosavą spalvų paletę ir, prireikus, eksportuoti savo kūrinį kaip paveikslo failus. Programa Drawy sukurta taip, kad būtų supaprastinta ir greita, kas leidžia lengvai įamžinti idėjas ir dirbti be jokio išsiblaškymo.</p>
         <p xml:lang="nl">Na een maand werk is Drawy eindelijk uitgegeven. Met Drawy creëert u ideeën, diagrammen en visuele notities op een oneindig whiteboard met een vloeiend en responsief werkveld. U kunt tekenen met drukgevoelige tabletondersteuning, tekst toevoegen, afbeeldingen invoegen en basisvormen zoals rechthoeken, ellipsen, pijlen en lijnen gebruiken om uw inhoud overzichtelijk te ordenen. U kunt uw eigen kleurenpalet kiezen en uw werk exporteren als afbeeldingsbestanden wanneer dat nodig is. Drawy is ontworpen om lichtgewicht en snel te blijven, waardoor het gemakkelijk is om ideeën vast te leggen en ongestoord te werken.</p>
         <p xml:lang="pt-BR">Após meses de trabalho, o Drawy finalmente foi lançado! O Drawy permite que você crie ideias, diagramas e anotações visuais em um quadro branco infinito com uma tela suave e responsiva. Você pode desenhar com suporte para tablets sensíveis à pressão, adicionar texto, inserir imagens e usar formas básicas como retângulos, elipses, setas e linhas para organizar seu conteúdo com clareza. Você pode escolher sua própria paleta de cores e exportar seu trabalho como arquivos de imagem sempre que necessário. O Drawy foi desenvolvido para ser leve e rápido, facilitando a captura de ideias e o trabalho livre, sem distrações.</p>
+        <p xml:lang="ru">После нескольких месяцев работы вышел первый выпуск Drawy. Drawy позволяет записывать идеи, рисовать диаграммы и делать наглядные заметки на бесконечной доске с плавным и отзывчивым холстом. Поддерживается рисование на планшете с учётом силы нажатия, добавление текста, вставка изображений и простые фигуры — прямоугольники, эллипсы, стрелки и линии — для наглядной организации содержимого. Можно выбрать собственную цветовую палитру и в любой момент экспортировать работу в файлы изображений. Drawy — лёгкое и быстрое приложение: идеи легко записать, а работать можно свободно, ни на что не отвлекаясь.</p>
         <p xml:lang="sk">Po mesiacoch práce bol Drawy konečne vydaný! Drawy vám umožňuje vytvárať nápady, diagramy a vizuálne poznámky na nekonečnej tabuli s plynulým a citlivým plátnom. Môžete kresliť s podporou tabletu citlivého na tlak, pridávať text, vkladať obrázky a používať základné tvary ako obdĺžniky, elipsy, šípky a čiary na prehľadné usporiadanie vášho obsahu. Môžete si zvoliť vlastnú farebnú paletu a podľa potreby exportovať svoju prácu ako obrázkové súbory. Drawy je vyvinutý tak, aby zostal nenáročný a rýchly, vďaka čomu je jednoduché zachytávať nápady a pracovať bez rušivých vplyvov.</p>
         <p xml:lang="sl">Po mesecih dela je Drawy končno izšel! Drawy vam omogoča ustvarjanje idej, diagramov in vizualnih zapiskov na neskončni beli tabli z gladkim in odzivnim platnom. Rišete lahko s podporo za tablico, občutljivo na pritisk, dodajate besedilo, vstavljate slike in uporabljate osnovne oblike, kot so pravokotniki, elipse, puščice in črte, da jasno organizirate svojo vsebino. Izberete lahko svojo barvno paleto in svoje delo izvozite kot slikovne datoteke, kadar koli je to potrebno. Drawy je zasnovan tako, da ostane lahek in hiter, kar omogoča enostavno zajemanje idej in prosto delo brez motenj.</p>
         <p xml:lang="tr">Aylar süren çalışmalardan sonra Drawy en sonunda yayımlandı! Drawy, akıcı ve duyarlı bir tuval üzerinde sonsuz bir beyaz tahtada fikirler, diyagramlar ve görsel notlar oluşturmanıza olanak tanır. Basınca duyarlı tablet desteğiyle çizim yapabilir, metin ekleyebilir, görseller ekleyebilir ve içeriğinizi net bir şekilde düzenlemek için dikdörtgenler, elipsler, oklar ve çizgiler gibi temel şekilleri kullanabilirsiniz. Kendi renk paletinizi seçebilir ve gerektiğinde çalışmalarınızı görsel dosyaları olarak dışa aktarabilirsiniz. Drawy, hafif ve hızlı kalacak şekilde tasarlanmıştır, bu da fikirleri yakalamayı ve dikkat dağıtıcı unsurlar olmadan özgürce çalışmayı kolaylaştırır.</p>
