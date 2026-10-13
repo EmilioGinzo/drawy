@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drawy\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-09 00:44+0000\n"
+"POT-Creation-Date: 2026-10-13 00:43+0000\n"
 "PO-Revision-Date: 2026-08-10 21:14+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -180,13 +180,13 @@ msgstr "غيّر نمط القائمة"
 msgid "Basic Shapes"
 msgstr "أشكال أساسية"
 
-#: plugins/basicshapes/triangle/triangle.cpp:88
+#: plugins/basicshapes/triangle/triangle.cpp:83
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Triangle"
 msgstr "مثلّث"
 
-#: plugins/basicshapes/xbox/xbox.cpp:76
+#: plugins/basicshapes/xbox/xbox.cpp:71
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "X Box"
@@ -270,7 +270,7 @@ msgstr "حدد الكائن"
 msgid "Ungroup Objects"
 msgstr "فك جمع الكائنات"
 
-#: widgets/components/bottomleftwidgets.cpp:48
+#: widgets/components/bottomleftwidgets.cpp:47
 #, kde-format
 msgctxt "@label, percent text"
 msgid "100%"
@@ -282,19 +282,19 @@ msgctxt "@info:tooltip"
 msgid "Reset Zoom"
 msgstr "صفّر التكبير"
 
-#: widgets/components/bottomleftwidgets.cpp:60
+#: widgets/components/bottomleftwidgets.cpp:61
 #, kde-format
 msgctxt "@label, percent value"
 msgid "%1%"
 msgstr "%1٪"
 
-#: widgets/components/bottomleftwidgets.cpp:82
+#: widgets/components/bottomleftwidgets.cpp:83
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Manage Pages"
 msgstr ""
 
-#: widgets/components/bottomleftwidgets.cpp:113
+#: widgets/components/bottomleftwidgets.cpp:114
 #, kde-format
 msgctxt "@action:button page name (index/count)"
 msgid "%1 (%2/%3)"
@@ -306,7 +306,7 @@ msgctxt "@action:button"
 msgid "Image"
 msgstr "صورة"
 
-#: widgets/components/toolbuttonselectplugin.cpp:65
+#: widgets/components/toolbuttonselectplugin.cpp:64
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "More Tools"
