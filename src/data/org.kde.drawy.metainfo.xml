@@ -179,7 +179,7 @@
     <screenshot environment="plasma:dark">
       <caption>Stay focused with a dark mode workspace.</caption>
       <caption xml:lang="ar">حافظ على تركيزك باستخدام مساحة عمل بالوضع المظلم.</caption>
-      <caption xml:lang="ca">Estigueu centrat amb un espai de treball en mode fosc.</caption>
+      <caption xml:lang="ca">Poseu el focus amb un espai de treball en mode fosc.</caption>
       <caption xml:lang="ca-valencia">Esteu centrat amb un espai de treball en mode fosc.</caption>
       <caption xml:lang="cs">Udržte si soustředění díky pracovnímu prostředí v tmavém režimu.</caption>
       <caption xml:lang="de">Bleiben Sie dank dem dunklen Modus konzentriert.</caption>
@@ -237,6 +237,7 @@
         <p xml:lang="ca-valencia">Afig la implementació de pàgines</p>
         <p xml:lang="cs">Přidána podpora pro stránky</p>
         <p xml:lang="es">Añadir compatibilidad con páginas.</p>
+        <p xml:lang="he">נוספה תמיכה בעמודים</p>
         <p xml:lang="ia">Adde supporto de pagina</p>
         <p xml:lang="it">Aggiunge il supporto per le pagine</p>
         <p xml:lang="ka">დაემატა გვერდის მხარდაჭერა</p>
