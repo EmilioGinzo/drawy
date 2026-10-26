@@ -58,4 +58,5 @@ Comment[zh_TW]=好用的無限畫布腦力激盪工具
 Exec=drawy %f
 Icon=drawy
 Categories=Qt;KDE;Graphics
+X-DocPath=drawy/index.html
 MimeType=application/x-drawy
