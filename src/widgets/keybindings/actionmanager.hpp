@@ -63,6 +63,11 @@ public:
         PreviousPage,
         ToggleInterface,
         CropImage,
+        SelectColor1,
+        SelectColor2,
+        SelectColor3,
+        SelectColor4,
+        SelectColor5,
     };
 
     Q_ENUM(Action)
@@ -107,6 +112,7 @@ private:
     void configureSettings();
 
     void switchToTool(Tool::Type type);
+    void selectStrokeColor(int index);
     void alignItems(ItemUtils::AlignType alignType);
 
     void clear();

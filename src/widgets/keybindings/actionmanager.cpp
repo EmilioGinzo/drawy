@@ -58,6 +58,8 @@
 #include "mime/mimemanager.hpp"
 #include "page/page.hpp"
 #include "page/pagemanager.hpp"
+#include "properties/widgets/colorwidgetbase.hpp"
+#include "properties/widgets/propertymanager.hpp"
 #include "serializer/pngserializer.hpp"
 #include "serializer/serializerutils.hpp"
 #include "serializer/svgserializer.hpp"
@@ -189,6 +191,17 @@ ActionManager::ActionManager(KActionCollection *actionCollection, ApplicationCon
         m_context->uiContext()->toggleInterfaceHidden();
     })->setIcon(QIcon::fromTheme(u"view-fullscreen"_s));
 
+    const std::array colorActions{Action::SelectColor1, Action::SelectColor2, Action::SelectColor3, Action::SelectColor4, Action::SelectColor5};
+    for (int i = 0; i < static_cast<int>(colorActions.size()); i++) {
+        createAction(colorActions[i],
+                     i18nc("@action", "Select Color %1", i + 1),
+                     {QKeySequence(QKeyCombination(Qt::Key(Qt::Key_1 + i)))},
+                     this,
+                     [this, i]() {
+                         selectStrokeColor(i);
+                     });
+    }
+
     createAction(Action::Debug, i18nc("@action", "Debug"), {}, this, &ActionManager::slotDebug);
 #if HAVE_WHATSNEWSNGSUPPORT
     createAction(Action::WhatsNew, i18nc("@action", "What's new"), {}, this, &ActionManager::slotShowWhatsNew);
@@ -314,6 +327,16 @@ QString ActionManager::actionName(Action type) const
         return u"toggle_interface"_s;
     case Action::CropImage:
         return u"crop_image"_s;
+    case Action::SelectColor1:
+        return u"select_color_1"_s;
+    case Action::SelectColor2:
+        return u"select_color_2"_s;
+    case Action::SelectColor3:
+        return u"select_color_3"_s;
+    case Action::SelectColor4:
+        return u"select_color_4"_s;
+    case Action::SelectColor5:
+        return u"select_color_5"_s;
     }
     Q_UNREACHABLE();
     return u""_s;
@@ -486,6 +509,20 @@ void ActionManager::zoomReset()
 void ActionManager::switchToTool(Tool::Type type)
 {
     m_context->uiContext()->toolBar()->changeTool(type);
+}
+
+void ActionManager::selectStrokeColor(int index)
+{
+    auto uiContext{m_context->uiContext()};
+
+    // not every tool has a stroke color (e.g. the eraser)
+    if (!uiContext->toolBar()->curTool().properties().contains(Property::Type::StrokeColor)) {
+        return;
+    }
+
+    if (auto widget{qobject_cast<ColorWidgetBase *>(uiContext->propertyManager()->widget(Property::Type::StrokeColor))}) {
+        widget->selectPaletteColor(index);
+    }
 }
 
 void ActionManager::zorderMove(ItemUtils::ZorderMove move)
