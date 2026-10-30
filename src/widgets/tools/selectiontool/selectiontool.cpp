@@ -6,6 +6,7 @@
 #include <KLocalizedString>
 
 #include <QDateTime>
+#include <algorithm>
 #include <set>
 
 #include "canvas/canvas.hpp"
@@ -437,6 +438,10 @@ void SelectionTool::beginCrop(ApplicationContext *context, const std::shared_ptr
 {
     endCrop(false);
 
+    if (image->pixmap().isNull() || image->sourceRect().isEmpty()) {
+        return;
+    }
+
     const QRectF box{image->normalizedBoundingBox()};
     const QRect source{image->sourceRect()};
     const qreal scaleX{box.width() / source.width()};
@@ -446,11 +451,23 @@ void SelectionTool::beginCrop(ApplicationContext *context, const std::shared_ptr
     m_cropRect = box;
     m_cropFullRect = QRectF{box.left() - source.left() * scaleX, box.top() - source.top() * scaleY, image->pixmap().width() * scaleX, image->pixmap().height() * scaleY};
     m_cropHandle = -1;
+    m_cropBoxSnapshot = box;
+    m_cropSourceSnapshot = source;
+    m_cropTransformSnapshot = image->transformObj();
 
     // leaving the selection tool cancels the crop
     auto toolBar{context->uiContext()->toolBar()};
     m_cropToolChanged = QObject::connect(toolBar, &ToolBar::toolChanged, toolBar, [this](Tool &tool) {
         if (tool.type() != Tool::Type::Selection) {
+            endCrop(false);
+        }
+    });
+
+    // zooming, panning, undo and the like re-render the canvas: drop the crop if the image changed, otherwise redraw the handles
+    m_cropRendered = QObject::connect(context->renderingContext(), &RenderingContext::canvasRendered, toolBar, [this]() {
+        if (cropStillValid()) {
+            paintCrop();
+        } else {
             endCrop(false);
         }
     });
@@ -471,7 +488,10 @@ void SelectionTool::endCrop(bool apply)
         return;
     }
 
+    const bool valid{cropStillValid()};
+
     QObject::disconnect(m_cropToolChanged);
+    QObject::disconnect(m_cropRendered);
     const auto image{std::move(m_cropImage)};
     m_cropImage = nullptr;
     m_cropHandle = -1;
@@ -486,7 +506,7 @@ void SelectionTool::endCrop(bool apply)
     canvas->setCursor(Qt::ArrowCursor);
     m_context->selectionContext()->setShouldRenderHandles(true);
 
-    if (apply) {
+    if (apply && valid) {
         const QPoint topLeft{qRound((m_cropRect.left() - m_cropFullRect.left()) / scaleX), qRound((m_cropRect.top() - m_cropFullRect.top()) / scaleY)};
         const QSize size{std::max(1, qRound(m_cropRect.width() / scaleX)), std::max(1, qRound(m_cropRect.height() / scaleY))};
         const QRect newSource{QRect{topLeft, size}.intersected(image->pixmap().rect())};
@@ -526,6 +546,24 @@ static QPointF cropHandlePoint(const QRectF &rect, int index)
 static QPolygonF cropQuad(const QRectF &rect)
 {
     return QPolygonF{{rect.topLeft(), rect.topRight(), rect.bottomRight(), rect.bottomLeft()}};
+}
+
+bool SelectionTool::cropStillValid() const
+{
+    if (!m_cropImage) {
+        return false;
+    }
+
+    if (m_cropImage->normalizedBoundingBox() != m_cropBoxSnapshot || m_cropImage->sourceRect() != m_cropSourceSnapshot
+        || m_cropImage->transformObj() != m_cropTransformSnapshot) {
+        return false;
+    }
+
+    // the image may have been deleted, or the page switched
+    const auto items{m_context->spatialContext()->quadtree().getAllItems()};
+    return std::ranges::any_of(items, [this](const auto &item) {
+        return item == m_cropImage;
+    });
 }
 
 void SelectionTool::paintCrop()
