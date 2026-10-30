@@ -108,6 +108,13 @@ void ColorWidgetBase::updateWidget()
     }
 }
 
+void ColorWidgetBase::selectPaletteColor(int index)
+{
+    if (auto btn{m_group->button(index)}) {
+        btn->click();
+    }
+}
+
 void ColorWidgetBase::assignCurrentColor(const QColor &col)
 {
     m_currentColorButton->setProperty("color-value", col);

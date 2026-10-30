@@ -18,6 +18,9 @@ public:
     void setValue(const QVariant &val) override;
     void updateWidget() override;
 
+    // Selects the palette color at the given position, as if its button had been clicked
+    void selectPaletteColor(int index);
+
 protected:
     void initialize();
     QButtonGroup *m_group = nullptr;
