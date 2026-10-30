@@ -245,6 +245,13 @@ void Controller::keyPressed(QKeyEvent *event)
     toolBar->curTool().keyPressed(m_context);
 }
 
+void Controller::textEditingQueried(bool *editing) const
+{
+    auto *textTool{dynamic_cast<TextTool *>(&m_context->uiContext()->toolBar()->curTool())};
+    const std::shared_ptr<TextItem> curItem{textTool == nullptr ? nullptr : textTool->curItem()};
+    *editing = curItem && curItem->mode() == TextItem::Mode::Edit;
+}
+
 void Controller::keyReleased(QKeyEvent *event)
 {
     if (m_zoomInProgress) {

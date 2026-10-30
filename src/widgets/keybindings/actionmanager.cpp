@@ -880,7 +880,7 @@ QAction *ActionManager::createToolAction(const Action &actionType, const QString
         auto uiContext{m_context->uiContext()};
 
         // pressing the key of the tool that is already active collapses/expands its options panel
-        if (uiContext->toolBar()->curTool().type() == toolType && !uiContext->isInterfaceHidden()) {
+        if (uiContext->toolBar()->curTool().type() == toolType && !uiContext->isInterfaceHidden() && !uiContext->propertyBar()->isHidden()) {
             uiContext->propertyBar()->toggleCollapsed();
             return;
         }

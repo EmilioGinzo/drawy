@@ -26,6 +26,7 @@ public:
     void mouseDoubleClick(QMouseEvent *event);
     void mouseTripleClick(QMouseEvent *event);
     void keyPressed(QKeyEvent *event);
+    void textEditingQueried(bool *editing) const;
     void keyReleased(QKeyEvent *event);
     void inputMethodInvoked(QInputMethodEvent *event);
     void inputMethodQueryInvoked(Qt::InputMethodQuery query, QVariant *value);

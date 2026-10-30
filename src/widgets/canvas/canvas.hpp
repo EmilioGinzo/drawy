@@ -44,6 +44,7 @@ Q_SIGNALS:
     void keyReleased(QKeyEvent *event);
     void inputMethodInvoked(QInputMethodEvent *event);
     void inputMethodQueryInvoked(Qt::InputMethodQuery query, QVariant *value) const;
+    void textEditingQueried(bool *editing) const;
     void tablet(QTabletEvent *event);
     void wheel(QWheelEvent *event);
     void resizeEventCalled();

@@ -91,6 +91,7 @@ MainWindow::MainWindow(
     connect(renderingContext->canvas(), &Canvas::mouseReleased, controller, &Controller::mouseReleased);
     connect(renderingContext->canvas(), &Canvas::keyPressed, controller, &Controller::keyPressed);
     connect(renderingContext->canvas(), &Canvas::keyReleased, controller, &Controller::keyReleased);
+    connect(renderingContext->canvas(), &Canvas::textEditingQueried, controller, &Controller::textEditingQueried);
     connect(renderingContext->canvas(), &Canvas::inputMethodInvoked, controller, &Controller::inputMethodInvoked);
     connect(renderingContext->canvas(), &Canvas::inputMethodQueryInvoked, controller, &Controller::inputMethodQueryInvoked);
     connect(renderingContext->canvas(), &Canvas::tablet, controller, &Controller::tablet);
