@@ -55,7 +55,7 @@ void ImageItem::deserialize(const QJsonObject &obj)
 
 void ImageItem::drawItem(QPainter &painter, const QPointF &offset) const
 {
-    painter.drawPixmap(m_boundingBox.translated(-offset), m_pixmap, m_pixmap.rect());
+    painter.drawPixmap(m_boundingBox.translated(-offset), m_pixmap, sourceRect());
 }
 
 const QPixmap &ImageItem::pixmap() const
@@ -89,4 +89,20 @@ QSizeF ImageItem::pastedSize() const
 void ImageItem::setBox(QRectF box)
 {
     m_boundingBox = box;
+}
+
+QRect ImageItem::sourceRect() const
+{
+    return m_sourceRect.isNull() ? m_pixmap.rect() : m_sourceRect;
+}
+
+void ImageItem::setSourceRect(const QRect &rect)
+{
+    m_sourceRect = rect == m_pixmap.rect() ? QRect{} : rect;
+    setDirty(true);
+}
+
+bool ImageItem::isCropped() const
+{
+    return !m_sourceRect.isNull();
 }

@@ -30,4 +30,8 @@ void ImageDeserializer::deserialize(const QJsonObject &obj)
     QPixmap pixmap;
     pixmap.loadFromData(data, "PNG");
     image->setPixmap(std::move(pixmap));
+
+    if (obj.contains(u"source_rect"_s)) {
+        image->setSourceRect(toRectF(value(obj, u"source_rect"_s)).toRect());
+    }
 }

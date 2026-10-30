@@ -43,6 +43,8 @@ target_sources(
         command/alignitemcommand.cpp
         command/lockcommand.hpp
         command/lockcommand.cpp
+        command/cropimagecommand.hpp
+        command/cropimagecommand.cpp
         command/zordercommand.hpp
         command/zordercommand.cpp
         command/commandbase.hpp

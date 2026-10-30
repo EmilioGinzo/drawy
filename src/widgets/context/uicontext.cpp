@@ -325,6 +325,9 @@ void UIContext::showContextMenu() const
         } else {
             menu->addAction(actionManager()->action(ActionManager::Action::LockItems));
         }
+        if ((*selectedItems.begin())->formType() == Item::FormType::Image) {
+            menu->addAction(actionManager()->action(ActionManager::Action::CropImage));
+        }
         menu->addSeparator();
         menu->addAction(actionManager()->action(ActionManager::Action::AddCustomElement));
     }

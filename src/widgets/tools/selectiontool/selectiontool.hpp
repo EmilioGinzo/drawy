@@ -7,6 +7,7 @@
 #include "tools/tool.hpp"
 #include "transformhandler/transformhandler.hpp"
 class Item;
+class ImageItem;
 
 class LIBDRAWYWIDGETS_TESTS_EXPORT SelectionTool : public Tool
 {
@@ -31,7 +32,25 @@ public:
 
     [[nodiscard]] QList<std::shared_ptr<Item>> getItemsUnderCursor(ApplicationContext *context) const;
 
+    // Crop mode: the image shows crop handles on the canvas until the crop is confirmed (Enter, double click
+    // or a click outside the image) or cancelled (Escape)
+    void beginCrop(ApplicationContext *context, const std::shared_ptr<ImageItem> &image);
+    [[nodiscard]] bool isCropping() const;
+
 private:
+    LIBDRAWYWIDGETS_NO_EXPORT void endCrop(bool apply);
+    LIBDRAWYWIDGETS_NO_EXPORT void paintCrop();
+    LIBDRAWYWIDGETS_NO_EXPORT int cropHandleAt(const QPointF &viewPos);
+    LIBDRAWYWIDGETS_NO_EXPORT QPointF cropLocalPos(const QPointF &viewPos);
+    LIBDRAWYWIDGETS_NO_EXPORT void cropMousePressed();
+    LIBDRAWYWIDGETS_NO_EXPORT void cropMouseMoved();
+    LIBDRAWYWIDGETS_NO_EXPORT void cropMouseReleased();
+
+    std::shared_ptr<ImageItem> m_cropImage;
+    QRectF m_cropRect; // in the local coordinates of the image
+    QRectF m_cropFullRect; // where the whole uncropped image would be
+    int m_cropHandle{-1};
+    QMetaObject::Connection m_cropToolChanged;
     LIBDRAWYWIDGETS_NO_EXPORT void updateCurrentHandler(ApplicationContext *context);
 
     TransformHandler *m_curHandler{};
