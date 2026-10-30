@@ -4,9 +4,12 @@
 
 #include "propertybar.hpp"
 
+#include <KLocalizedString>
+#include <QIcon>
 #include <QLabel>
 #include <QScrollArea>
 #include <QStyle>
+#include <QToolButton>
 
 #include "context/applicationcontext.hpp"
 #include "context/selectioncontext.hpp"
@@ -29,26 +32,84 @@ PropertyBar::PropertyBar(ApplicationContext *context, QWidget *parent)
 
     m_layout->setAlignment(Qt::AlignTop);
 
-    QScrollArea *scrollArea = new QScrollArea(this);
-    scrollArea->setWidget(m_contentWidget);
+    m_scrollArea = new QScrollArea(this);
+    m_scrollArea->setWidget(m_contentWidget);
 
-    scrollArea->setWidgetResizable(true);
+    m_scrollArea->setWidgetResizable(true);
 
-    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    m_scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
-    scrollArea->setFrameShape(QFrame::NoFrame);
+    m_scrollArea->setFrameShape(QFrame::NoFrame);
+
+    const int iconWidth{style()->pixelMetric(QStyle::PM_ToolBarIconSize)};
+    m_collapseButton = new QToolButton(this);
+    m_collapseButton->setAutoRaise(true);
+    m_collapseButton->setIconSize(QSize{iconWidth, iconWidth});
+    connect(m_collapseButton, &QToolButton::clicked, this, &PropertyBar::toggleCollapsed);
 
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 0, 0, 0);
-    mainLayout->addWidget(scrollArea);
+    mainLayout->setSpacing(0);
+    mainLayout->addWidget(m_collapseButton, 0, Qt::AlignLeft);
+    mainLayout->addWidget(m_scrollArea);
+
+    updateCollapseButton();
 }
 
 QSize PropertyBar::sizeHint() const
 {
+    if (m_collapsed) {
+        return m_collapseButton->sizeHint();
+    }
+
     QSize size = m_contentWidget->sizeHint();
     size.setWidth(size.width() + style()->pixelMetric(QStyle::PM_ScrollBarExtent));
+    size.setHeight(size.height() + m_collapseButton->sizeHint().height());
     return size;
+}
+
+bool PropertyBar::isCollapsed() const
+{
+    return m_collapsed;
+}
+
+void PropertyBar::setCollapsed(bool collapsed)
+{
+    if (m_collapsed == collapsed) {
+        return;
+    }
+
+    m_collapsed = collapsed;
+    m_scrollArea->setVisible(!m_collapsed);
+    updateCollapseButton();
+    updateGeometry();
+}
+
+void PropertyBar::toggleCollapsed()
+{
+    setCollapsed(!m_collapsed);
+}
+
+void PropertyBar::setInterfaceHidden(bool hidden)
+{
+    m_interfaceHidden = hidden;
+    if (hidden) {
+        hide();
+    } else {
+        updateToolProperties();
+    }
+}
+
+void PropertyBar::updateCollapseButton()
+{
+    if (m_collapsed) {
+        m_collapseButton->setIcon(QIcon::fromTheme(u"sidebar-expand-left"_s, QIcon::fromTheme(u"go-next"_s)));
+        m_collapseButton->setToolTip(i18nc("@info:tooltip", "Show tool options"));
+    } else {
+        m_collapseButton->setIcon(QIcon::fromTheme(u"sidebar-collapse-left"_s, QIcon::fromTheme(u"go-previous"_s)));
+        m_collapseButton->setToolTip(i18nc("@info:tooltip", "Hide tool options"));
+    }
 }
 
 void PropertyBar::setPropertyManager(PropertyManager *manager)
@@ -109,7 +170,7 @@ void PropertyBar::updateProperties(Tool &tool)
         }
     }
 
-    if (properties.empty()) {
+    if (properties.empty() || m_interfaceHidden) {
         hide();
     } else {
         show();

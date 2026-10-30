@@ -61,6 +61,7 @@ public:
         DeletePage,
         NextPage,
         PreviousPage,
+        ToggleInterface,
     };
 
     Q_ENUM(Action)
