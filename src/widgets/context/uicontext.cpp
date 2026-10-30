@@ -149,6 +149,29 @@ PropertyBar *UIContext::propertyBar() const
     return m_propertyBar;
 }
 
+bool UIContext::isInterfaceHidden() const
+{
+    return m_interfaceHidden;
+}
+
+void UIContext::setInterfaceHidden(bool hidden)
+{
+    if (m_interfaceHidden == hidden) {
+        return;
+    }
+
+    m_interfaceHidden = hidden;
+    m_topWidgets->setVisible(!hidden);
+    m_topLeftWidgets->setVisible(!hidden);
+    m_bottomLeftWidgets->setVisible(!hidden);
+    m_propertyBar->setInterfaceHidden(hidden);
+}
+
+void UIContext::toggleInterfaceHidden()
+{
+    setInterfaceHidden(!m_interfaceHidden);
+}
+
 BottomLeftWidgets *UIContext::bottomLeftWidgets() const
 {
     return m_bottomLeftWidgets;

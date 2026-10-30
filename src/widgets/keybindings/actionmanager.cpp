@@ -182,6 +182,10 @@ ActionManager::ActionManager(KActionCollection *actionCollection, ApplicationCon
                  &ActionManager::slotPreviousPage)
         ->setIcon(QIcon::fromTheme(u"go-previous"_s));
 
+    createAction(Action::ToggleInterface, i18nc("@action", "Show/Hide Interface"), {QKeySequence(QKeyCombination(Qt::Key_Tab))}, this, [this]() {
+        m_context->uiContext()->toggleInterfaceHidden();
+    })->setIcon(QIcon::fromTheme(u"view-fullscreen"_s));
+
     createAction(Action::Debug, i18nc("@action", "Debug"), {}, this, &ActionManager::slotDebug);
 #if HAVE_WHATSNEWSNGSUPPORT
     createAction(Action::WhatsNew, i18nc("@action", "What's new"), {}, this, &ActionManager::slotShowWhatsNew);
@@ -303,6 +307,8 @@ QString ActionManager::actionName(Action type) const
         return u"next_page"_s;
     case Action::PreviousPage:
         return u"previous_page"_s;
+    case Action::ToggleInterface:
+        return u"toggle_interface"_s;
     }
     Q_UNREACHABLE();
     return u""_s;
@@ -871,6 +877,13 @@ QAction *ActionManager::createAction(const Action &type, const QString &title, c
 QAction *ActionManager::createToolAction(const Action &actionType, const QString &title, const QList<QKeySequence> &keys, Tool::Type toolType)
 {
     return createAction(actionType, title, keys, this, [this, toolType]() -> void {
+        auto uiContext{m_context->uiContext()};
+
+        // pressing the key of the tool that is already active collapses/expands its options panel
+        if (uiContext->toolBar()->curTool().type() == toolType && !uiContext->isInterfaceHidden() && !uiContext->propertyBar()->isHidden()) {
+            uiContext->propertyBar()->toggleCollapsed();
+            return;
+        }
         switchToTool(toolType);
     });
 }

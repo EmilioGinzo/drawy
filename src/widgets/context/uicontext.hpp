@@ -40,6 +40,10 @@ public:
     [[nodiscard]] PropertyManager *propertyManager() const;
     [[nodiscard]] CustomElementsManager *customElementsManager() const;
 
+    [[nodiscard]] bool isInterfaceHidden() const;
+    void setInterfaceHidden(bool hidden);
+    void toggleInterfaceHidden();
+
     void showContextMenu() const;
     [[nodiscard]] bool showSpellCheckMenu(const std::shared_ptr<TextItem> &textItem, const QPoint &globalPos) const;
     void reset();
@@ -63,6 +67,7 @@ private:
     BottomLeftWidgets *m_bottomLeftWidgets = nullptr;
     Event *const m_event;
     Tool *m_lastTool = nullptr; // Used to call the cleanup function of the last tool
+    bool m_interfaceHidden{false};
     PluginFormManager *const mPluginFormManager;
     CustomElementsManager *const mCustomElementsManager;
 

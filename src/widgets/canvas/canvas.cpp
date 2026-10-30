@@ -220,6 +220,21 @@ void Canvas::dropEvent(QDropEvent *event)
 
 bool Canvas::event(QEvent *event)
 {
+    // while text is being edited, plain keys (Tab, letters, digits) must reach the text item instead of triggering shortcuts
+    if (event->type() == QEvent::ShortcutOverride) {
+        const auto ev{static_cast<QKeyEvent *>(event)};
+        const bool plainKey{!(ev->modifiers() & (Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier))};
+        const bool typable{ev->key() == Qt::Key_Tab || ev->key() == Qt::Key_Backtab || !ev->text().isEmpty()};
+        bool editing{false};
+        if (plainKey && typable) {
+            Q_EMIT textEditingQueried(&editing);
+        }
+        if (editing) {
+            ev->accept();
+            return true;
+        }
+    }
+
     if (event->type() == QEvent::KeyPress) {
         QKeyEvent *ev = dynamic_cast<QKeyEvent *>(event);
         if (ev && ((ev->key() == Qt::Key_Tab) || (ev->key() == Qt::Key_Backtab))) {
