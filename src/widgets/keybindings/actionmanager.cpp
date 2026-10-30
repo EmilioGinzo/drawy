@@ -51,6 +51,7 @@
 #include "data-structures/quadtree.hpp"
 #include "debug/debugdialog.hpp"
 #include "drawy_debug.h"
+#include "item/image.hpp"
 #include "item/itemcache/itemcache.hpp"
 #include "jobs/loadjobutil.hpp"
 #include "jobs/saveasjob.hpp"
@@ -159,6 +160,8 @@ ActionManager::ActionManager(KActionCollection *actionCollection, ApplicationCon
     createAction(Action::LockItems, i18nc("@action", "Locks"), {}, this, &ActionManager::slotLock)->setIcon(QIcon::fromTheme(u"lock"_s));
 
     createAction(Action::UnLockItem, i18nc("@action", "Unlock"), {}, this, &ActionManager::slotUnLock)->setIcon(QIcon::fromTheme(u"unlock"_s));
+
+    createAction(Action::CropImage, i18nc("@action", "Crop Image…"), {}, this, &ActionManager::slotCropImage)->setIcon(QIcon::fromTheme(u"transform-crop"_s));
 
     createAction(Action::AddCustomElement, i18nc("@action", "Add to Library"), {}, this, &ActionManager::slotAddCustomElement);
 
@@ -309,6 +312,8 @@ QString ActionManager::actionName(Action type) const
         return u"previous_page"_s;
     case Action::ToggleInterface:
         return u"toggle_interface"_s;
+    case Action::CropImage:
+        return u"crop_image"_s;
     }
     Q_UNREACHABLE();
     return u""_s;
@@ -370,6 +375,22 @@ void ActionManager::slotUnLock()
         m_context->renderingContext()->markForRender();
         m_context->renderingContext()->markForUpdate();
     }
+}
+
+void ActionManager::slotCropImage()
+{
+    const auto &selectedItems{m_context->selectionContext()->selectedItems()};
+    if (selectedItems.size() != 1) {
+        return;
+    }
+
+    const auto image{std::dynamic_pointer_cast<ImageItem>(*selectedItems.begin())};
+    auto selectionTool{dynamic_cast<SelectionTool *>(&m_context->uiContext()->toolBar()->curTool())};
+    if (!image || image->locked() || !selectionTool) {
+        return;
+    }
+
+    selectionTool->beginCrop(m_context, image);
 }
 
 void ActionManager::slotDebug()

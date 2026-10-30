@@ -62,6 +62,7 @@ public:
         NextPage,
         PreviousPage,
         ToggleInterface,
+        CropImage,
     };
 
     Q_ENUM(Action)
@@ -119,6 +120,7 @@ private:
 #endif
     void slotLock();
     void slotUnLock();
+    void slotCropImage();
     void slotDebug();
     void openRecentFile(const QUrl &url);
     void zorderMove(ItemUtils::ZorderMove move);

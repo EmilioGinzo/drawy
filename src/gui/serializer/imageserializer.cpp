@@ -28,6 +28,9 @@ QJsonObject ImageSerializer::serialize(int zorder) const
     img->pixmap().save(&dataBuf, "PNG");
 
     obj[u"image_data"_s] = QJsonValue(QString::fromUtf8(data.toBase64()));
+    if (img->isCropped()) {
+        obj[u"source_rect"_s] = ItemSerializer::toJson(QRectF{img->sourceRect()});
+    }
     obj[u"bounding_box"_s] = ItemSerializer::toJson(img->normalizedBoundingBox());
     return obj;
 }

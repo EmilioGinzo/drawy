@@ -7,6 +7,7 @@
 
 #include "item.hpp"
 
+#include <QRect>
 #include <QSizeF>
 
 class QPixmap;
@@ -35,9 +36,15 @@ public:
 
     void setBox(QRectF box);
 
+    // Part of the pixmap that is shown, in pixmap pixels; the whole pixmap when not cropped
+    [[nodiscard]] QRect sourceRect() const;
+    void setSourceRect(const QRect &rect);
+    [[nodiscard]] bool isCropped() const;
+
 protected:
     void drawItem(QPainter &painter, const QPointF &offset) const override;
 
 private:
     QPixmap m_pixmap;
+    QRect m_sourceRect;
 };
