@@ -40,6 +40,7 @@ public:
 private:
     LIBDRAWYWIDGETS_NO_EXPORT void endCrop(bool apply);
     LIBDRAWYWIDGETS_NO_EXPORT void paintCrop();
+    [[nodiscard]] LIBDRAWYWIDGETS_NO_EXPORT bool cropStillValid() const;
     LIBDRAWYWIDGETS_NO_EXPORT int cropHandleAt(const QPointF &viewPos);
     LIBDRAWYWIDGETS_NO_EXPORT QPointF cropLocalPos(const QPointF &viewPos);
     LIBDRAWYWIDGETS_NO_EXPORT void cropMousePressed();
@@ -51,6 +52,11 @@ private:
     QRectF m_cropFullRect; // where the whole uncropped image would be
     int m_cropHandle{-1};
     QMetaObject::Connection m_cropToolChanged;
+    QMetaObject::Connection m_cropRendered;
+    // how the image looked when the crop started, to notice it changing under us (undo, redo, delete, page change)
+    QRectF m_cropBoxSnapshot;
+    QRect m_cropSourceSnapshot;
+    QTransform m_cropTransformSnapshot;
     LIBDRAWYWIDGETS_NO_EXPORT void updateCurrentHandler(ApplicationContext *context);
 
     TransformHandler *m_curHandler{};

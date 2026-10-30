@@ -32,6 +32,10 @@ void ImageDeserializer::deserialize(const QJsonObject &obj)
     image->setPixmap(std::move(pixmap));
 
     if (obj.contains(u"source_rect"_s)) {
-        image->setSourceRect(toRectF(value(obj, u"source_rect"_s)).toRect());
+        // ignore a rect that does not overlap the pixmap, e.g. from a damaged file
+        const QRect source{toRectF(value(obj, u"source_rect"_s)).toRect().intersected(image->pixmap().rect())};
+        if (!source.isEmpty()) {
+            image->setSourceRect(source);
+        }
     }
 }
