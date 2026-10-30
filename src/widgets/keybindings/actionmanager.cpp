@@ -877,6 +877,13 @@ QAction *ActionManager::createAction(const Action &type, const QString &title, c
 QAction *ActionManager::createToolAction(const Action &actionType, const QString &title, const QList<QKeySequence> &keys, Tool::Type toolType)
 {
     return createAction(actionType, title, keys, this, [this, toolType]() -> void {
+        auto uiContext{m_context->uiContext()};
+
+        // pressing the key of the tool that is already active collapses/expands its options panel
+        if (uiContext->toolBar()->curTool().type() == toolType && !uiContext->isInterfaceHidden()) {
+            uiContext->propertyBar()->toggleCollapsed();
+            return;
+        }
         switchToTool(toolType);
     });
 }
