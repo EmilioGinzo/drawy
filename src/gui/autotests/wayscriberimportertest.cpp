@@ -212,9 +212,34 @@ void WayScriberImporterTest::shouldConvertEveryShapeKind()
 void WayScriberImporterTest::shouldReportLosses()
 {
     const auto result = WayScriberImporter::importSession(readFixture(u"allshapes.json"_s));
-    // Eraser, blur, spotlight, curved arrow, arrow label, text background, polygon, unknown kind.
-    QCOMPARE(result.warnings.size(), 8);
+    // Eraser, blur, spotlight, curved arrow, arrow label, text background, polygon outline, blackboard background, unknown kind.
+    QCOMPARE(result.warnings.size(), 9);
     QVERIFY(result.warnings.last().contains(u"Hologram"_s));
+}
+
+void WayScriberImporterTest::shouldReadLegacySessions()
+{
+    // Before boards existed, sessions kept one frame or a page list per mode, and bare shapes.
+    const QByteArray legacy{readFixture(u"legacy.json"_s)};
+    QVERIFY(WayScriberImporter::isSession(legacy));
+    const auto result = WayScriberImporter::importSession(legacy);
+    QVERIFY(result.ok);
+    const QJsonArray pages = result.document[u"pages"_s].toArray();
+    QCOMPARE(pages.size(), 3);
+    QCOMPARE(pageItems(result.document, 0).size(), 1);
+    QCOMPARE(pageItems(result.document, 1).size(), 1);
+    QCOMPARE(pageItems(result.document, 1).at(0).toObject()[u"type"_s].toString(), u"LINE"_s);
+    QCOMPARE(result.document[u"current_page"_s].toInt(), 2);
+    // The entry that is no shape at all is reported, not listed as an unknown kind.
+    QCOMPARE(result.warnings.size(), 1);
+    QVERIFY(!result.warnings.first().contains(u"()"_s));
+}
+
+void WayScriberImporterTest::shouldNotTakeOtherJsonForSessions()
+{
+    // WayScriber keeps a sessions.json catalog next to the sessions.
+    QVERIFY(!WayScriberImporter::isSession(R"({"version":1,"sessions":[]})"));
+    QVERIFY(!WayScriberImporter::importSession(R"({"version":1,"sessions":[]})").ok);
 }
 
 void WayScriberImporterTest::shouldDeserializeIntoDrawyItems()

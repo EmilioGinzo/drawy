@@ -249,7 +249,9 @@
        "id": 10,
        "shape": {
         "Polygon": {
-         "kind": "Rhombus",
+         "kind": {
+          "type": "rhombus"
+         },
          "points": [
           [
            50,
@@ -286,9 +288,8 @@
        "shape": {
         "Polygon": {
          "kind": {
-          "Regular": {
-           "sides": 5
-          }
+          "type": "regular",
+          "sides": 5
          },
          "points": [
           [

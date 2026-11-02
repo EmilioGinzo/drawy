@@ -12,6 +12,7 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <stdexcept>
 LoadJob::LoadJob(ApplicationContext *context, QObject *parent)
     : QObject{parent}
     , mApplicationContext(context)
@@ -58,7 +59,16 @@ void LoadJob::start()
         mImportWarnings = std::move(imported.warnings);
         docObj = std::move(imported.document);
     } else {
-        const QByteArray byteArray = Common::Utils::Compression::decompressData(fileData);
+        QByteArray byteArray;
+        try {
+            byteArray = Common::Utils::Compression::decompressData(fileData);
+        } catch (const std::runtime_error &error) {
+            // Not a Drawy document (or a damaged one): report it instead of letting the exception abort the app.
+            qCWarning(DRAWY_LOG) << "Failed to decompress file:" << error.what();
+            Q_EMIT loadFailed();
+            deleteLater();
+            return;
+        }
         QJsonParseError parseError;
         const QJsonDocument doc = QJsonDocument::fromJson(byteArray, &parseError);
         if (doc.isNull() || !doc.isObject()) {

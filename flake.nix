@@ -52,6 +52,7 @@
                 bear
                 entr
                 zstd.dev
+                zlib.dev
                 pkg-config
                 reuse
                 libclang.python

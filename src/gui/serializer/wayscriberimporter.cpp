@@ -46,9 +46,44 @@ enum class Loss : uint8_t {
     ArrowLabel,
     TextBackground,
     PolygonShape,
+    PolygonFill,
+    BoardBackground,
+    MalformedShape,
     UnreadableImage,
     UnknownShape,
 };
+
+const QStringList legacyBoardIds{u"transparent"_s, u"whiteboard"_s, u"blackboard"_s};
+
+// Sessions before boards existed keep one frame (or a list of pages) per mode at the top level.
+QJsonArray sessionBoards(const QJsonObject &session)
+{
+    const QJsonArray boards = session[u"boards"_s].toArray();
+    if (!boards.isEmpty()) {
+        return boards;
+    }
+    QJsonArray legacy;
+    for (const auto &id : legacyBoardIds) {
+        QJsonArray pages = session[id + u"_pages"_s].toArray();
+        if (pages.isEmpty() && session[id].isObject()) {
+            pages.append(session[id]);
+        }
+        if (!pages.isEmpty()) {
+            legacy.append(QJsonObject{{u"id"_s, id}, {u"pages"_s, pages}, {u"active_page"_s, session[id + u"_active_page"_s].toInt()}});
+        }
+    }
+    return legacy;
+}
+
+bool looksLikeSession(const QJsonObject &obj)
+{
+    if (obj[u"boards"_s].isArray()) {
+        return true;
+    }
+    return std::any_of(legacyBoardIds.cbegin(), legacyBoardIds.cend(), [&obj](const QString &id) {
+        return obj[id].isObject() || obj[id + u"_pages"_s].isArray();
+    });
+}
 
 class Converter
 {
@@ -355,7 +390,10 @@ QJsonObject Converter::polygon(const QJsonObject &s)
     if (points.isEmpty()) {
         return {};
     }
-    if (s[u"kind"_s].toString() == u"Rhombus"_s) {
+    // WayScriber tags the kind as {"type": "rhombus"}; accept a bare string too.
+    const QJsonValue kind{s[u"kind"_s]};
+    const QString kindName{kind.isObject() ? kind.toObject().value(u"type"_s).toString() : kind.toString()};
+    if (kindName.compare(u"rhombus"_s, Qt::CaseInsensitive) == 0) {
         QPolygonF corners;
         for (const auto &p : points) {
             const QJsonArray xy = p.toArray();
@@ -368,6 +406,9 @@ QJsonObject Converter::polygon(const QJsonObject &s)
     }
 
     lose(Loss::PolygonShape);
+    if (s[u"fill"_s].toBool()) {
+        lose(Loss::PolygonFill);
+    }
     QJsonArray closed = points;
     closed.append(points.first());
     const QJsonObject color{s[u"color"_s].toObject()};
@@ -470,7 +511,7 @@ QJsonObject Converter::image(const QJsonObject &s)
 QJsonArray Converter::convertShape(const QJsonObject &shape)
 {
     if (shape.size() != 1) {
-        lose(Loss::UnknownShape);
+        lose(Loss::MalformedShape);
         return {};
     }
     const QString kind{shape.constBegin().key()};
@@ -518,8 +559,8 @@ QJsonArray Converter::convertShape(const QJsonObject &shape)
 
 QJsonObject Converter::convert(const QJsonObject &session)
 {
-    const QJsonArray boards = session[u"boards"_s].toArray();
-    const QString activeBoard{session[u"active_board_id"_s].toString()};
+    const QJsonArray boards = sessionBoards(session);
+    const QString activeBoard{session[u"active_board_id"_s].toString(session[u"active_mode"_s].toString())};
     const bool severalBoards{boards.size() > 1};
 
     QJsonArray pages;
@@ -529,11 +570,15 @@ QJsonObject Converter::convert(const QJsonObject &session)
         const QString boardId{board[u"id"_s].toString()};
         const QJsonArray boardPages = board[u"pages"_s].toArray();
         const bool boardHasShapes{std::any_of(boardPages.cbegin(), boardPages.cend(), [](const QJsonValue &page) {
-            return !page.toObject()[u"shapes"_s].toArray().isEmpty();
+            return !page.toObject().value(u"shapes"_s).toArray().isEmpty();
         })};
         // Unused boards (WayScriber always keeps the transparent and whiteboard ones) would only add blank pages.
         if (!boardHasShapes) {
             continue;
+        }
+        // Drawy has one canvas color for every page; WayScriber's blackboard is dark unless configured otherwise.
+        if (board[u"appearance"_s].toObject().value(u"background"_s).isObject() || boardId == u"blackboard"_s) {
+            lose(Loss::BoardBackground);
         }
 
         for (qsizetype index = 0; index < boardPages.size(); ++index) {
@@ -545,7 +590,9 @@ QJsonObject Converter::convert(const QJsonObject &session)
             QJsonArray items;
             for (const auto &entry : page[u"shapes"_s].toArray()) {
                 const QJsonObject entryObj{entry.toObject()};
-                for (const auto &converted : convertShape(entryObj[u"shape"_s].toObject())) {
+                // Old sessions store bare shapes instead of {id, shape, created_at, locked} entries.
+                const QJsonObject shape{entryObj.contains(u"shape"_s) ? entryObj[u"shape"_s].toObject() : entryObj};
+                for (const auto &converted : convertShape(shape)) {
                     QJsonObject drawyItem{converted.toObject()};
                     drawyItem[u"zorder"_s] = QString::number(items.size());
                     if (entryObj[u"locked"_s].toBool()) {
@@ -617,7 +664,18 @@ QStringList Converter::warnings() const
             result << i18np("1 text lost its background box.", "%1 texts lost their background boxes.", n);
             break;
         case Loss::PolygonShape:
-            result << i18np("1 polygon became an unfilled outline.", "%1 polygons became unfilled outlines.", n);
+            result << i18np("1 polygon became a freehand outline.", "%1 polygons became freehand outlines.", n);
+            break;
+        case Loss::PolygonFill:
+            result << i18np("1 polygon lost its fill.", "%1 polygons lost their fill.", n);
+            break;
+        case Loss::BoardBackground:
+            result << i18np("1 board had its own background color, which Drawy does not keep; light ink may be hard to see.",
+                            "%1 boards had their own background color, which Drawy does not keep; light ink may be hard to see.",
+                            n);
+            break;
+        case Loss::MalformedShape:
+            result << i18np("1 shape entry could not be read and was skipped.", "%1 shape entries could not be read and were skipped.", n);
             break;
         case Loss::UnreadableImage:
             result << i18np("1 image could not be read and was skipped.", "%1 images could not be read and were skipped.", n);
@@ -668,7 +726,7 @@ bool isSession(const QByteArray &fileData)
         return true;
     }
     const QJsonDocument doc{QJsonDocument::fromJson(fileData)};
-    return doc.isObject() && doc.object()[u"boards"_s].isArray();
+    return doc.isObject() && looksLikeSession(doc.object());
 }
 
 ImportResult importSession(const QByteArray &fileData)
@@ -685,7 +743,7 @@ ImportResult importSession(const QByteArray &fileData)
 
     QJsonParseError parseError;
     const QJsonDocument doc{QJsonDocument::fromJson(json, &parseError)};
-    if (!doc.isObject() || !doc.object()[u"boards"_s].isArray()) {
+    if (!doc.isObject() || !looksLikeSession(doc.object())) {
         result.error = parseError.error != QJsonParseError::NoError ? i18n("The WayScriber session is not valid JSON: %1", parseError.errorString())
                                                                     : i18n("The file is not a WayScriber session.");
         return result;

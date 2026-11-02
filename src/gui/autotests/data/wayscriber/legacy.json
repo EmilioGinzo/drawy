@@ -1,0 +1,74 @@
+{
+ "version": 3,
+ "last_modified": "2025-01-01T00:00:00Z",
+ "active_mode": "whiteboard",
+ "transparent": {
+  "shapes": [
+   {
+    "id": 1,
+    "shape": {
+     "Line": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 100,
+      "y2": 0,
+      "color": {
+       "r": 1.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 1.0
+      },
+      "thick": 2.0
+     }
+    },
+    "created_at": 1,
+    "locked": false
+   }
+  ]
+ },
+ "whiteboard_pages": [
+  {
+   "shapes": [
+    {
+     "Line": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 100,
+      "y2": 0,
+      "color": {
+       "r": 1.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 1.0
+      },
+      "thick": 2.0
+     }
+    },
+    {
+     "bogus": 1,
+     "other": 2
+    }
+   ]
+  },
+  {
+   "shapes": [
+    {
+     "Line": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 100,
+      "y2": 0,
+      "color": {
+       "r": 1.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 1.0
+      },
+      "thick": 2.0
+     }
+    }
+   ]
+  }
+ ],
+ "whiteboard_active_page": 1
+}

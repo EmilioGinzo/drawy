@@ -20,6 +20,8 @@ private Q_SLOTS:
     void shouldMapBoardsToPages();
     void shouldConvertEveryShapeKind();
     void shouldReportLosses();
+    void shouldReadLegacySessions();
+    void shouldNotTakeOtherJsonForSessions();
     void shouldDeserializeIntoDrawyItems();
     void shouldKeepPressureStrokeWidths();
     void shouldReencodeNonPngImages();

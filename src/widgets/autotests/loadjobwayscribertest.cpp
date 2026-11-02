@@ -73,4 +73,30 @@ void LoadJobWayScriberTest::shouldStillLoadDrawyFiles()
     QCOMPARE(imported.count(), 0);
 }
 
+void LoadJobWayScriberTest::shouldFailOnOtherFiles_data()
+{
+    QTest::addColumn<QByteArray>("content");
+    QTest::newRow("empty") << QByteArray{};
+    QTest::newRow("text") << QByteArray{"not a drawing"};
+    QTest::newRow("other json") << QByteArray{R"({"version":1,"sessions":[]})"};
+}
+
+void LoadJobWayScriberTest::shouldFailOnOtherFiles()
+{
+    QFETCH(QByteArray, content);
+    QTemporaryFile file;
+    QVERIFY(file.open());
+    file.write(content);
+    file.close();
+
+    LoadJob loadJob(nullptr);
+    loadJob.setFileName(file.fileName());
+    QSignalSpy failed(&loadJob, &LoadJob::loadFailed);
+    QSignalSpy done(&loadJob, &LoadJob::loadDone);
+    loadJob.start();
+
+    QCOMPARE(failed.count(), 1);
+    QCOMPARE(done.count(), 0);
+}
+
 #include "moc_loadjobwayscribertest.cpp"
