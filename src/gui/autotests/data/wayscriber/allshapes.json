@@ -1,0 +1,537 @@
+{
+ "version": 8,
+ "save_generation": 1,
+ "last_modified": "2026-11-01T23:19:37Z",
+ "active_board_id": "blackboard",
+ "boards": [
+  {
+   "id": "transparent",
+   "pages": [
+    {
+     "shapes": [
+      {
+       "id": 1,
+       "shape": {
+        "Freehand": {
+         "points": [
+          [
+           10.5,
+           20.25
+          ],
+          [
+           30,
+           40
+          ],
+          [
+           50,
+           45
+          ]
+         ],
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "thick": 3.0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 2,
+       "shape": {
+        "FreehandPressure": {
+         "points": [
+          [
+           0,
+           0,
+           2.0
+          ],
+          [
+           10,
+           10,
+           4.0
+          ],
+          [
+           20,
+           20,
+           8.0
+          ]
+         ],
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         }
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 3,
+       "shape": {
+        "MarkerStroke": {
+         "points": [
+          [
+           0,
+           100
+          ],
+          [
+           200,
+           100
+          ]
+         ],
+         "color": {
+          "r": 1.0,
+          "g": 0.9,
+          "b": 0.2,
+          "a": 1.0
+         },
+         "thick": 12.0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 4,
+       "shape": {
+        "Line": {
+         "x1": 0,
+         "y1": 0,
+         "x2": 100,
+         "y2": 0,
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "thick": 2.0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": true
+      },
+      {
+       "id": 5,
+       "shape": {
+        "Arrow": {
+         "x1": 0,
+         "y1": 50,
+         "x2": 100,
+         "y2": 50,
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "thick": 2.0,
+         "arrow_length": 20.0,
+         "arrow_angle": 30.0,
+         "head_at_end": true
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 6,
+       "shape": {
+        "Arrow": {
+         "x1": 0,
+         "y1": 60,
+         "x2": 100,
+         "y2": 60,
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "thick": 2.0,
+         "arrow_length": 20.0,
+         "arrow_angle": 30.0,
+         "head_at_end": false,
+         "style": "curved",
+         "bend": 0.3,
+         "label": {
+          "value": 2,
+          "size": 14.0,
+          "font_descriptor": {
+           "family": "Sans",
+           "weight": "bold",
+           "style": "italic"
+          }
+         }
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 7,
+       "shape": {
+        "Arrow": {
+         "x1": 0,
+         "y1": 70,
+         "x2": 100,
+         "y2": 70,
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "thick": 2.0,
+         "arrow_length": 20.0,
+         "arrow_angle": 30.0,
+         "style": "double"
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 8,
+       "shape": {
+        "Rect": {
+         "x": 10,
+         "y": 20,
+         "w": 30,
+         "h": 40,
+         "fill": true,
+         "fill_color": {
+          "r": 1.0,
+          "g": 0.9,
+          "b": 0.2,
+          "a": 1.0
+         },
+         "color": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 1.0,
+          "a": 0.5
+         },
+         "thick": 2.0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 9,
+       "shape": {
+        "Ellipse": {
+         "cx": 100,
+         "cy": 100,
+         "rx": 20,
+         "ry": 10,
+         "fill": false,
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "thick": 4.0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 10,
+       "shape": {
+        "Polygon": {
+         "kind": "Rhombus",
+         "points": [
+          [
+           50,
+           0
+          ],
+          [
+           100,
+           50
+          ],
+          [
+           50,
+           100
+          ],
+          [
+           0,
+           50
+          ]
+         ],
+         "fill": true,
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "thick": 2.0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 11,
+       "shape": {
+        "Polygon": {
+         "kind": {
+          "Regular": {
+           "sides": 5
+          }
+         },
+         "points": [
+          [
+           0,
+           0
+          ],
+          [
+           10,
+           0
+          ],
+          [
+           15,
+           10
+          ],
+          [
+           5,
+           15
+          ],
+          [
+           -5,
+           10
+          ]
+         ],
+         "fill": false,
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "thick": 2.0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 12,
+       "shape": {
+        "Text": {
+         "x": 200,
+         "y": 200,
+         "text": "Hello",
+         "color": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 1.0,
+          "a": 0.5
+         },
+         "size": 18.0,
+         "font_descriptor": {
+          "family": "Sans",
+          "weight": "bold",
+          "style": "italic"
+         },
+         "background_enabled": true,
+         "wrap_width": 120
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 13,
+       "shape": {
+        "StickyNote": {
+         "x": 300,
+         "y": 300,
+         "text": "Note",
+         "background": {
+          "r": 1.0,
+          "g": 0.9,
+          "b": 0.2,
+          "a": 1.0
+         },
+         "size": 16.0,
+         "font_descriptor": {
+          "family": "Sans",
+          "weight": "normal",
+          "style": "normal"
+         }
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 14,
+       "shape": {
+        "StepMarker": {
+         "x": 400,
+         "y": 400,
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "label": {
+          "value": 3,
+          "size": 18.0,
+          "font_descriptor": {
+           "family": "Sans",
+           "weight": "bold",
+           "style": "italic"
+          }
+         }
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 15,
+       "shape": {
+        "Image": {
+         "x": 5,
+         "y": 6,
+         "w": 34,
+         "h": 14,
+         "data": {
+          "mime_type": "image/png",
+          "width": 17,
+          "height": 7,
+          "bytes": "iVBORw0KGgoAAAANSUhEUgAAABEAAAAHAQAAAADGmZvRAAAACXBIWXMAAA9hAAAPYQGoP6dpAAAAH0lEQVR42mP4/7+BoaOjgeH23gaGG71A+i2E/v+/AQDNFA63enkB1gAAAABJRU5ErkJggg=="
+         }
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 16,
+       "shape": {
+        "EraserStroke": {
+         "points": [
+          [
+           0,
+           0
+          ],
+          [
+           5,
+           5
+          ]
+         ],
+         "brush": {
+          "size": 10.0,
+          "kind": "Circle"
+         }
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 17,
+       "shape": {
+        "BlurRect": {
+         "x": 0,
+         "y": 0,
+         "w": 10,
+         "h": 10,
+         "strength": 5.0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 18,
+       "shape": {
+        "Spotlight": {
+         "cx": 0,
+         "cy": 0,
+         "rx": 10,
+         "ry": 10
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      },
+      {
+       "id": 19,
+       "shape": {
+        "Hologram": {
+         "x": 0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      }
+     ]
+    }
+   ],
+   "active_page": 0
+  },
+  {
+   "id": "whiteboard",
+   "pages": [
+    {
+     "shapes": []
+    }
+   ],
+   "active_page": 0
+  },
+  {
+   "id": "blackboard",
+   "pages": [
+    {
+     "shapes": [
+      {
+       "id": 1,
+       "shape": {
+        "Line": {
+         "x1": 0,
+         "y1": 0,
+         "x2": 100,
+         "y2": 0,
+         "color": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+         },
+         "thick": 2.0
+        }
+       },
+       "created_at": 1793574868309,
+       "locked": false
+      }
+     ],
+     "view_offset": [
+      100,
+      -50
+     ]
+    },
+    {
+     "shapes": [],
+     "page_name": "Plan"
+    }
+   ],
+   "active_page": 1
+  }
+ ],
+ "tool_state": {}
+}

@@ -125,6 +125,8 @@ target_sources(
         serializer/deserializeutils.cpp
         serializer/pngserializer.hpp
         serializer/pngserializer.cpp
+        serializer/wayscriberimporter.hpp
+        serializer/wayscriberimporter.cpp
         transformhandlerutils.hpp
         transformhandlerutils.cpp
         pluginform/pluginform.cpp
@@ -222,6 +224,8 @@ target_link_libraries(
         KF6::SonnetCore
         drawyconfig
         ${ZSTD_LINK_LIBRARIES}
+    PRIVATE
+        ZLIB::ZLIB
 )
 
 set_target_properties(

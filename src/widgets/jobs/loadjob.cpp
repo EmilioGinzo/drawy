@@ -8,6 +8,7 @@
 #include "context/applicationcontext.hpp"
 #include "drawy_debug.h"
 #include "jobs/deserializejob.hpp"
+#include "serializer/wayscriberimporter.hpp"
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -41,20 +42,34 @@ void LoadJob::start()
         return;
     }
 
-    const QByteArray compressedByteArray = file.readAll();
+    const QByteArray fileData = file.readAll();
     file.close();
 
-    const QByteArray byteArray = Common::Utils::Compression::decompressData(compressedByteArray);
-    QJsonParseError parseError;
-    const QJsonDocument doc = QJsonDocument::fromJson(byteArray, &parseError);
-    if (doc.isNull() || !doc.isObject()) {
-        qCWarning(DRAWY_LOG) << "JSON parse failed:" << parseError.errorString() << "offset:" << parseError.offset;
-        Q_EMIT loadFailed();
-        deleteLater();
-        return;
+    QJsonObject docObj;
+    if (WayScriberImporter::isSession(fileData)) {
+        auto imported = WayScriberImporter::importSession(fileData);
+        if (!imported.ok) {
+            qCWarning(DRAWY_LOG) << "WayScriber import failed:" << imported.error;
+            Q_EMIT loadFailed();
+            deleteLater();
+            return;
+        }
+        mIsImport = true;
+        mImportWarnings = std::move(imported.warnings);
+        docObj = std::move(imported.document);
+    } else {
+        const QByteArray byteArray = Common::Utils::Compression::decompressData(fileData);
+        QJsonParseError parseError;
+        const QJsonDocument doc = QJsonDocument::fromJson(byteArray, &parseError);
+        if (doc.isNull() || !doc.isObject()) {
+            qCWarning(DRAWY_LOG) << "JSON parse failed:" << parseError.errorString() << "offset:" << parseError.offset;
+            Q_EMIT loadFailed();
+            deleteLater();
+            return;
+        }
+        docObj = doc.object();
     }
 
-    const QJsonObject docObj = doc.object();
     auto job = new DeserializeJob(this);
     job->setJsonObject(docObj);
     connect(job, &DeserializeJob::deserializeDone, this, &LoadJob::slotDeserializeDone);
@@ -73,7 +88,13 @@ void LoadJob::slotDeserializeDone(const LoadJobUtil::DeserializeInfo &info)
 {
     Q_EMIT loadDone(info);
 
-    if (!mIsAutoSave) {
+    if (mIsImport) {
+        // An imported session is a new, unsaved drawing: saving must ask for a .drawy name, never overwrite the session.
+        if (mApplicationContext) {
+            mApplicationContext->setCurrentFileModified(true);
+        }
+        Q_EMIT sessionImported(mImportWarnings);
+    } else if (!mIsAutoSave) {
         if (mApplicationContext) {
             mApplicationContext->setCurrentFileModified(false);
             mApplicationContext->setCurrentFileName(mFileName);

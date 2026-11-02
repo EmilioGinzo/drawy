@@ -49,6 +49,7 @@ TopLeftWidgets::TopLeftWidgets(ActionManager *actionManager, QWidget *parent)
         menu->addAction(actionManager->action(KStandardActions::Open));
         menu->addAction(actionManager->action(KStandardActions::Save));
         menu->addAction(actionManager->action(KStandardActions::SaveAs));
+        menu->addAction(actionManager->action(ActionManager::Action::ImportWayScriberSession));
         menu->addAction(actionManager->action(ActionManager::Action::ExportAsImage));
         menu->addSeparator();
         menu->addAction(actionManager->action(ActionManager::Action::Clear));

@@ -16,6 +16,7 @@
 #include <QFileDialog>
 #include <QJsonDocument>
 #include <QMimeData>
+#include <QStandardPaths>
 #include <QXmlStreamWriter>
 #include <memory>
 #include <utility>
@@ -98,6 +99,8 @@ ActionManager::ActionManager(KActionCollection *actionCollection, ApplicationCon
                  this,
                  &ActionManager::exportToImage)
         ->setIcon(QIcon::fromTheme(u"document-export"_s));
+    createAction(Action::ImportWayScriberSession, i18nc("@action", "Import WayScriber Session…"), {}, this, &ActionManager::importWayScriberSession)
+        ->setIcon(QIcon::fromTheme(u"document-import"_s));
     createAction(Action::ExportSelectedElementsAsImage, i18nc("@action", "Export as Image"), {}, this, &ActionManager::exportSelectedElementsToImage)
         ->setIcon(QIcon::fromTheme(u"document-export"_s));
     createAction(Action::GroupItems, i18nc("@action", "Group Items"), {QKeySequence(QKeyCombination(Qt::CTRL, Qt::Key_G))}, this, &ActionManager::groupItems)
@@ -337,6 +340,8 @@ QString ActionManager::actionName(Action type) const
         return u"select_color_4"_s;
     case Action::SelectColor5:
         return u"select_color_5"_s;
+    case Action::ImportWayScriberSession:
+        return u"import_wayscriber_session"_s;
     }
     Q_UNREACHABLE();
     return u""_s;
@@ -732,6 +737,23 @@ void ActionManager::openFile()
     m_recentFiles->saveEntries(KConfigGroup(KSharedConfig::openConfig(), u"Recent Files"_s));
 }
 
+void ActionManager::importWayScriberSession()
+{
+    if (!confirmSaveAfterModification()) {
+        return;
+    }
+
+    // WayScriber keeps its autosaved sessions here, one per output.
+    const QString sessionDir{QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + u"/wayscriber"_s};
+    const QString startDir{QDir{sessionDir}.exists() ? sessionDir : QDir::homePath()};
+    const QString filter{i18n("WayScriber sessions (*.json *.wayscriber-session *.gz)")};
+    const QString fileName{QFileDialog::getOpenFileName(m_context->parentWidget(), i18nc("@title:window", "Import WayScriber Session"), startDir, filter)};
+    if (fileName.isEmpty()) {
+        return;
+    }
+    loadFile(fileName);
+}
+
 void ActionManager::exportToImageElements(const QList<std::shared_ptr<Item>> &items)
 {
     const QDir homeDir{QDir::home()};
@@ -787,6 +809,14 @@ void ActionManager::loadFile(const QString &fileName)
     connect(job, &LoadJob::loadDone, this, &ActionManager::slotLoadDone);
     connect(job, &LoadJob::loadFailed, this, [this, fileName]() {
         slotLoadFailed(fileName);
+    });
+    connect(job, &LoadJob::sessionImported, this, [this](const QStringList &warnings) {
+        if (!warnings.isEmpty()) {
+            KMessageBox::informationList(m_context->parentWidget(),
+                                         i18n("The WayScriber session was imported, but Drawy has no equivalent for some of its content:"),
+                                         warnings,
+                                         i18nc("@title:window", "Import WayScriber Session"));
+        }
     });
 
     job->start();
