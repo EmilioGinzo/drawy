@@ -16,7 +16,7 @@
 * Add basic shapes plugin.
 * Disable screenlocker when using apps in fullscreen mode.
 * Add Image support.
-* Import WayScriber sessions (menu, or open the session file directly) to continue a drawing in Drawy.
+* Import WayScriber sessions (menu, or pass the session file on the command line) to continue a drawing in Drawy.
 
 ### Changed
 * Freehand strokes now use Bezier curves and interpolation to make drawing feel significantly smoother.

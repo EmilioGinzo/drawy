@@ -198,6 +198,9 @@ void WayScriberImporterTest::shouldConvertEveryShapeKind()
     QCOMPARE(note.at(1).toObject()[u"text"_s].toString(), u"Note"_s);
 
     const QJsonArray step = items.at(13).toObject()[u"items"_s].toArray();
+    // A red marker gets WayScriber's near-white ring.
+    QCOMPARE(propertyValue(step.at(0).toObject(), u"StrokeColor"_s).toString(), u"#fafafa"_s);
+    QCOMPARE(propertyValue(step.at(0).toObject(), u"BackgroundColor"_s).toString(), u"#ff0000"_s);
     QCOMPARE(step.at(0).toObject()[u"type"_s].toString(), u"ELLIPSE"_s);
     QCOMPARE(step.at(1).toObject()[u"text"_s].toString(), u"3"_s);
     // The circle is centred on the marker position.
@@ -212,8 +215,9 @@ void WayScriberImporterTest::shouldConvertEveryShapeKind()
 void WayScriberImporterTest::shouldReportLosses()
 {
     const auto result = WayScriberImporter::importSession(readFixture(u"allshapes.json"_s));
-    // Eraser, blur, spotlight, curved arrow, arrow label, text background, polygon outline, blackboard background, unknown kind.
-    QCOMPARE(result.warnings.size(), 9);
+    // Eraser, blur, spotlight, curved arrow, arrow label, text background, polygon outline, blackboard background,
+    // fill opacity (the rectangle's fill is opaque, its border half transparent), unknown kind.
+    QCOMPARE(result.warnings.size(), 10);
     QVERIFY(result.warnings.last().contains(u"Hologram"_s));
 }
 
@@ -233,6 +237,37 @@ void WayScriberImporterTest::shouldReadLegacySessions()
     // The entry that is no shape at all is reported, not listed as an unknown kind.
     QCOMPARE(result.warnings.size(), 1);
     QVERIFY(!result.warnings.first().contains(u"()"_s));
+}
+
+void WayScriberImporterTest::shouldImportBlankSessions()
+{
+    // WayScriber leaves the boards key out when nothing is drawn.
+    const QByteArray blank{R"({"version":7,"last_modified":"2026-10-05T12:32:40Z","active_board_id":"transparent","tool_state":{}})"};
+    QVERIFY(WayScriberImporter::isSession(blank));
+    const auto result = WayScriberImporter::importSession(blank);
+    QVERIFY(result.ok);
+    QCOMPARE(result.document[u"pages"_s].toArray().size(), 1);
+    QVERIFY(pageItems(result.document, 0).isEmpty());
+    QVERIFY(result.warnings.isEmpty());
+}
+
+void WayScriberImporterTest::shouldWarnOnlyForDarkBoards()
+{
+    const QJsonObject red{{u"r"_s, 1.0}, {u"g"_s, 0.0}, {u"b"_s, 0.0}, {u"a"_s, 1.0}};
+    const QJsonObject line{{u"Line"_s, QJsonObject{{u"x1"_s, 0}, {u"y1"_s, 0}, {u"x2"_s, 10}, {u"y2"_s, 0}, {u"color"_s, red}, {u"thick"_s, 2.0}}}};
+    const auto importBoard = [&line](const QString &id, const QJsonValue &background) {
+        const QJsonObject page{{u"shapes"_s, QJsonArray{QJsonObject{{u"shape"_s, line}}}}};
+        const QJsonObject board{{u"id"_s, id}, {u"appearance"_s, QJsonObject{{u"background"_s, background}}}, {u"pages"_s, QJsonArray{page}}};
+        const QJsonObject session{{u"version"_s, 8}, {u"active_board_id"_s, id}, {u"boards"_s, QJsonArray{board}}};
+        return WayScriberImporter::importSession(QJsonDocument{session}.toJson()).warnings.size();
+    };
+    const QJsonObject white{{u"r"_s, 1.0}, {u"g"_s, 1.0}, {u"b"_s, 1.0}, {u"a"_s, 1.0}};
+    const QJsonObject black{{u"r"_s, 0.1}, {u"g"_s, 0.1}, {u"b"_s, 0.1}, {u"a"_s, 1.0}};
+    QCOMPARE(importBoard(u"whiteboard"_s, white), 0);
+    QCOMPARE(importBoard(u"transparent"_s, QJsonValue{}), 0);
+    QCOMPARE(importBoard(u"blackboard"_s, black), 1);
+    QCOMPARE(importBoard(u"blackboard"_s, QJsonValue{}), 1);
+    QCOMPARE(importBoard(u"blackboard"_s, white), 0);
 }
 
 void WayScriberImporterTest::shouldNotTakeOtherJsonForSessions()

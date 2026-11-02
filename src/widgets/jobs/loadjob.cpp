@@ -12,7 +12,7 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <stdexcept>
+#include <exception>
 LoadJob::LoadJob(ApplicationContext *context, QObject *parent)
     : QObject{parent}
     , mApplicationContext(context)
@@ -62,7 +62,7 @@ void LoadJob::start()
         QByteArray byteArray;
         try {
             byteArray = Common::Utils::Compression::decompressData(fileData);
-        } catch (const std::runtime_error &error) {
+        } catch (const std::exception &error) {
             // Not a Drawy document (or a damaged one): report it instead of letting the exception abort the app.
             qCWarning(DRAWY_LOG) << "Failed to decompress file:" << error.what();
             Q_EMIT loadFailed();

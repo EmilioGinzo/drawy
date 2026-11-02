@@ -21,6 +21,8 @@ private Q_SLOTS:
     void shouldConvertEveryShapeKind();
     void shouldReportLosses();
     void shouldReadLegacySessions();
+    void shouldImportBlankSessions();
+    void shouldWarnOnlyForDarkBoards();
     void shouldNotTakeOtherJsonForSessions();
     void shouldDeserializeIntoDrawyItems();
     void shouldKeepPressureStrokeWidths();

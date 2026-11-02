@@ -49,6 +49,7 @@ enum class Loss : uint8_t {
     PolygonFill,
     BoardBackground,
     MalformedShape,
+    FillOpacity,
     UnreadableImage,
     UnknownShape,
 };
@@ -77,7 +78,8 @@ QJsonArray sessionBoards(const QJsonObject &session)
 
 bool looksLikeSession(const QJsonObject &obj)
 {
-    if (obj[u"boards"_s].isArray()) {
+    // An empty session has no boards key at all, only its header.
+    if (obj[u"boards"_s].isArray() || (obj[u"version"_s].isDouble() && obj[u"active_board_id"_s].isString())) {
         return true;
     }
     return std::any_of(legacyBoardIds.cbegin(), legacyBoardIds.cend(), [&obj](const QString &id) {
@@ -108,6 +110,7 @@ private:
     QJsonObject stepMarker(const QJsonObject &s);
     QJsonObject image(const QJsonObject &s);
 
+    void appendFill(QJsonArray &properties, const QJsonObject &s);
     void lose(Loss loss);
 
     QMap<Loss, int> mLosses;
@@ -195,18 +198,6 @@ QJsonArray strokeProperties(const QJsonObject &color, qreal thick)
     return strokeProperties(color, thick, opacity(color));
 }
 
-// WayScriber fills with the border color unless the shape has its own fill_color.
-void appendFill(QJsonArray &properties, const QJsonObject &s)
-{
-    if (!s[u"fill"_s].toBool()) {
-        properties.append(property(u"BackgroundStyle"_s, u"None"_s));
-        return;
-    }
-    const QJsonObject fill{s[u"fill_color"_s].isObject() ? s[u"fill_color"_s].toObject() : s[u"color"_s].toObject()};
-    properties.append(property(u"BackgroundStyle"_s, u"Solid"_s));
-    properties.append(property(u"BackgroundColor"_s, rgbName(fill)));
-}
-
 QJsonObject boxItem(const QString &type, const QRectF &box, QJsonArray properties)
 {
     QJsonObject result{item(type, properties)};
@@ -270,16 +261,43 @@ QJsonObject textItem(qreal x, qreal baseline, const QString &text, const QColor 
     return result;
 }
 
+qreal luminance(const QColor &color)
+{
+    return 0.299 * color.redF() + 0.587 * color.greenF() + 0.114 * color.blueF();
+}
+
 // Text that stays readable on a filled marker or note, as WayScriber picks it.
 QColor contrastingText(const QColor &background)
 {
-    const qreal luminance{0.299 * background.redF() + 0.587 * background.greenF() + 0.114 * background.blueF()};
-    return luminance > 0.6 ? QColor::fromRgbF(0.12f, 0.12f, 0.12f) : QColor{Qt::white};
+    return luminance(background) > 0.6 ? QColor::fromRgbF(0.12f, 0.12f, 0.12f) : QColor{Qt::white};
+}
+
+// The ring WayScriber draws around a step marker: near-black on light markers, near-white on dark ones.
+QJsonObject contrastingOutline(const QColor &marker)
+{
+    const double shade{luminance(marker) > 0.6 ? 0.05 : 0.98};
+    return {{u"r"_s, shade}, {u"g"_s, shade}, {u"b"_s, shade}, {u"a"_s, marker.alphaF()}};
 }
 
 QList<qreal> constantPressures(qsizetype count)
 {
     return QList<qreal>(count, fullWidthPressure);
+}
+
+// WayScriber fills with the border color unless the shape has its own fill_color.
+// Drawy has one opacity for border and fill, taken from the border.
+void Converter::appendFill(QJsonArray &properties, const QJsonObject &s)
+{
+    if (!s[u"fill"_s].toBool()) {
+        properties.append(property(u"BackgroundStyle"_s, u"None"_s));
+        return;
+    }
+    const QJsonObject fill{s[u"fill_color"_s].isObject() ? s[u"fill_color"_s].toObject() : s[u"color"_s].toObject()};
+    if (opacity(fill) != opacity(s[u"color"_s].toObject())) {
+        lose(Loss::FillOpacity);
+    }
+    properties.append(property(u"BackgroundStyle"_s, u"Solid"_s));
+    properties.append(property(u"BackgroundColor"_s, rgbName(fill)));
 }
 
 QJsonObject Converter::freeform(const QJsonArray &points, qreal width, const QList<qreal> &pressures, const QJsonObject &color, int opacityValue)
@@ -473,7 +491,7 @@ QJsonObject Converter::stepMarker(const QJsonObject &s)
 
     const QJsonObject color{s[u"color"_s].toObject()};
     const QColor textColor{contrastingText(toColor(color))};
-    QJsonArray circleProperties = strokeProperties(color, std::max(size * 0.12, 1.5));
+    QJsonArray circleProperties = strokeProperties(contrastingOutline(toColor(color)), std::max(size * 0.12, 1.5), opacity(color));
     circleProperties.append(property(u"BackgroundStyle"_s, u"Solid"_s));
     circleProperties.append(property(u"BackgroundColor"_s, rgbName(color)));
     const QRectF circle{center.x() - radius, center.y() - radius, 2 * radius, 2 * radius};
@@ -576,8 +594,11 @@ QJsonObject Converter::convert(const QJsonObject &session)
         if (!boardHasShapes) {
             continue;
         }
-        // Drawy has one canvas color for every page; WayScriber's blackboard is dark unless configured otherwise.
-        if (board[u"appearance"_s].toObject().value(u"background"_s).isObject() || boardId == u"blackboard"_s) {
+        // Drawy has one canvas color for every page, so ink meant for a dark board may vanish.
+        // The blackboard is dark unless its appearance says otherwise.
+        const QJsonValue background{board[u"appearance"_s].toObject().value(u"background"_s)};
+        const bool darkBoard{background.isObject() ? luminance(toColor(background.toObject())) < 0.5 : boardId == u"blackboard"_s};
+        if (darkBoard) {
             lose(Loss::BoardBackground);
         }
 
@@ -670,9 +691,12 @@ QStringList Converter::warnings() const
             result << i18np("1 polygon lost its fill.", "%1 polygons lost their fill.", n);
             break;
         case Loss::BoardBackground:
-            result << i18np("1 board had its own background color, which Drawy does not keep; light ink may be hard to see.",
-                            "%1 boards had their own background color, which Drawy does not keep; light ink may be hard to see.",
+            result << i18np("1 board had a dark background, which Drawy does not keep; light ink may be hard to see.",
+                            "%1 boards had a dark background, which Drawy does not keep; light ink may be hard to see.",
                             n);
+            break;
+        case Loss::FillOpacity:
+            result << i18np("1 fill took the transparency of its border.", "%1 fills took the transparency of their borders.", n);
             break;
         case Loss::MalformedShape:
             result << i18np("1 shape entry could not be read and was skipped.", "%1 shape entries could not be read and were skipped.", n);
