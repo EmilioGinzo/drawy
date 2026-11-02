@@ -193,6 +193,9 @@ if(GIT_SOURCE_TARBALL)
     endif()
 endif()
 
+# zlib to read gzip-compressed WayScriber sessions
+find_package(ZLIB REQUIRED)
+
 # ZSTD for compression
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(ZSTD REQUIRED libzstd)

@@ -68,6 +68,7 @@ public:
         SelectColor3,
         SelectColor4,
         SelectColor5,
+        ImportWayScriberSession,
     };
 
     Q_ENUM(Action)
@@ -108,6 +109,7 @@ private:
     void saveAsNewFile();
     void saveCurrentFile();
     void openFile();
+    void importWayScriberSession();
     void exportToImage();
     void configureSettings();
 
